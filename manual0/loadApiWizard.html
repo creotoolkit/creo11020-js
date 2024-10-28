@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+*	History : 
+* -----------------------------------------------------------
+*  22-Apr-2019		P-70-07 	 rkumbhare   $$1 Created
+*
+*
+*	This file loads the page for Creo.JS Documentation.
+*
+-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Creo.JS - HTML based API Wizard</title>
+</head>
+<script type="text/javascript">
+
+	function getQueryVariable() {
+		var vars = window.location.href.split("?");		
+		if(vars[1] != null) {
+			document.getElementById('apiwiz').src = "APIWizObjects.html" + window.location.search;
+		} else
+			document.getElementById('apiwiz').src = "APIWizObjects.html";
+    }
+</script>
+<frameset cols="22%, *" style="border:1;" onload="getQueryVariable()">	
+	<frame src="" name="menu" id="apiwiz" scrolling="auto"/> 	
+	<frameset rows="96%, *">
+		<frame name="main" id="100" scrolling="auto" />
+		<frame src="footbar.html" name="footbar" id="150" scrolling="no" noresize="noresize"/>
+	</frameset>
+</frameset>
+</html>

@@ -1,0 +1,509 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>
+     CIP JavaScript documentation for module-level class "MpfcArgument"
+    </title>
+<link href="cipdoc_default.css" type="text/css" rel="stylesheet">
+</head>
+<body class="frame-entity">
+<table cellspacing="0" width="100%" border="0" class="toolbar">
+<tr>
+<td class="toolbar-navigation"><a href="library.html">Library</a>&nbsp;|&nbsp;Module
+     </td><td class="toolbar-frame-links"><a target="_top" href="index.html">Frames</a>&nbsp;|&nbsp;<a target="_top" href="t-pfcArgument-MpfcArgument.html">Expand</a></td><td class="toolbar-lib-name">
+  
+ </td>
+</tr>
+</table>
+<hr>
+<h2>Class&nbsp;MpfcArgument</h2>
+<hr>
+<br>
+<br>
+<hr>
+<br>
+<b>Method Summary</b>
+<br>
+<br>
+<table cellpadding="3" border="0" class="method-summary">
+<tr>
+<td></td>
+</tr>
+<tr>
+<td width="1%" class="return-type"><tt>static&nbsp;<a class="type" href="t-pfcArgument-ArgValue.html">pfcArgValue</a></tt></td><td width="1%" class="func-name"><tt><a class="func" href="#pfcCreateIntArgValue">pfcCreateIntArgValue</a></tt></td><td class="func-params"><tt>
+ (number&nbsp;Value)
+</tt></td>
+</tr>
+<tr>
+<td></td><td colspan="2" class="entities-text">Creates an integer argument value object.
+</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+<tr>
+<td width="1%" class="return-type"><tt>static&nbsp;<a class="type" href="t-pfcArgument-ArgValue.html">pfcArgValue</a></tt></td><td width="1%" class="func-name"><tt><a class="func" href="#pfcCreateDoubleArgValue">pfcCreateDoubleArgValue</a></tt></td><td class="func-params"><tt>
+ (number&nbsp;Value)
+</tt></td>
+</tr>
+<tr>
+<td></td><td colspan="2" class="entities-text">Creates a double argument value object.
+</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+<tr>
+<td width="1%" class="return-type"><tt>static&nbsp;<a class="type" href="t-pfcArgument-ArgValue.html">pfcArgValue</a></tt></td><td width="1%" class="func-name"><tt><a class="func" href="#pfcCreateBoolArgValue">pfcCreateBoolArgValue</a></tt></td><td class="func-params"><tt>
+ (boolean&nbsp;Value)
+</tt></td>
+</tr>
+<tr>
+<td></td><td colspan="2" class="entities-text">Creates a boolean argument value object.
+</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+<tr>
+<td width="1%" class="return-type"><tt>static&nbsp;<a class="type" href="t-pfcArgument-ArgValue.html">pfcArgValue</a></tt></td><td width="1%" class="func-name"><tt><a class="func" href="#pfcCreateASCIIStringArgValue">pfcCreateASCIIStringArgValue</a></tt></td><td class="func-params"><tt>
+ (string&nbsp;Value)
+</tt></td>
+</tr>
+<tr>
+<td></td><td colspan="2" class="entities-text">Creates an ASCII string argument value object.
+</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+<tr>
+<td width="1%" class="return-type"><tt>static&nbsp;<a class="type" href="t-pfcArgument-ArgValue.html">pfcArgValue</a></tt></td><td width="1%" class="func-name"><tt><a class="func" href="#pfcCreateStringArgValue">pfcCreateStringArgValue</a></tt></td><td class="func-params"><tt>
+ (string&nbsp;Value)
+</tt></td>
+</tr>
+<tr>
+<td></td><td colspan="2" class="entities-text">Creates a string argument value object.
+</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+<tr>
+<td width="1%" class="return-type"><tt>static&nbsp;<a class="type" href="t-pfcArgument-ArgValue.html">pfcArgValue</a></tt></td><td width="1%" class="func-name"><tt><a class="func" href="#pfcCreateSelectionArgValue">pfcCreateSelectionArgValue</a></tt></td><td class="func-params"><tt>
+ (<a class="type" href="t-pfcSelect-Selection.html">pfcSelection</a>&nbsp;Value)
+</tt></td>
+</tr>
+<tr>
+<td></td><td colspan="2" class="entities-text">Creates a new selection argument value object.
+</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+<tr>
+<td width="1%" class="return-type"><tt>static&nbsp;<a class="type" href="t-pfcArgument-ArgValue.html">pfcArgValue</a></tt></td><td width="1%" class="func-name"><tt><a class="func" href="#pfcCreateTransformArgValue">pfcCreateTransformArgValue</a></tt></td><td class="func-params"><tt>
+ (<a class="type" href="t-pfcBase-Transform3D.html">pfcTransform3D</a>&nbsp;Value)
+</tt></td>
+</tr>
+<tr>
+<td></td><td colspan="2" class="entities-text">Creates a new transform argument value object.
+</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+<tr>
+<td width="1%" class="return-type"><tt><a class="type" href="t-pfcArgument-Argument.html">pfcArgument</a></tt></td><td width="1%" class="func-name"><tt><a class="func" href="#pfcFindArgumentByLabel">pfcFindArgumentByLabel</a></tt></td><td class="func-params"><tt>
+ (<a class="type" href="t-pfcArgument-Arguments.html">pfcArguments</a>&nbsp;ArgList, string&nbsp;Label)
+</tt></td>
+</tr>
+<tr>
+<td></td><td colspan="2" class="entities-text">&nbsp; </td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</table>
+<br>
+<hr>
+<br>
+<b>Method Detail</b>
+<br>
+<hr>
+<br>
+<a name="pfcCreateIntArgValue">
+<table cellpadding="5" cellspacing="0" border="0" class="method-def">
+<tr>
+<td class="return-type"><tt>static&nbsp;<a class="type" href="t-pfcArgument-ArgValue.html">pfcArgValue</a></tt></td><td class="func-name"><tt>pfcCreateIntArgValue</tt></td><td class="func-params"><tt>
+ (number&nbsp;Value)
+</tt></td>
+</tr>
+</table>
+</a>
+<table border="0" class="method-doc">
+<tr>
+<td></td><td>
+<br>Creates an integer argument value object.
+<br>
+<dl>
+<dt>
+<b>See Also:</b>
+</dt>
+<dd>
+<tt><b><a class="method" href="t-pfcArgument-Argument.html#Create">pfcArgument.Create()</a></b></tt>, <tt><b><a class="method" href="t-pfcProToolkit-Dll.html#ExecuteFunction">pfcDll.ExecuteFunction()</a></b></tt>
+</dd>
+</dl>
+<dl>
+<dt>
+<b>Parameters:</b>
+</dt>
+<dd>
+<dl>
+<dt>
+<tt><b>Value</b></tt>
+</dt>
+<dd>The integer value.</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt>
+<b>Returns:</b>
+</dt>
+<dd>The created argument value object.</dd>
+</dl>
+</td>
+</tr>
+</table>
+<br>
+<hr>
+<br>
+<a name="pfcCreateDoubleArgValue">
+<table cellpadding="5" cellspacing="0" border="0" class="method-def">
+<tr>
+<td class="return-type"><tt>static&nbsp;<a class="type" href="t-pfcArgument-ArgValue.html">pfcArgValue</a></tt></td><td class="func-name"><tt>pfcCreateDoubleArgValue</tt></td><td class="func-params"><tt>
+ (number&nbsp;Value)
+</tt></td>
+</tr>
+</table>
+</a>
+<table border="0" class="method-doc">
+<tr>
+<td></td><td>
+<br>Creates a double argument value object.
+<br>
+<dl>
+<dt>
+<b>See Also:</b>
+</dt>
+<dd>
+<tt><b><a class="method" href="t-pfcArgument-Argument.html#Create">pfcArgument.Create()</a></b></tt>, <tt><b><a class="method" href="t-pfcProToolkit-Dll.html#ExecuteFunction">pfcDll.ExecuteFunction()</a></b></tt>
+</dd>
+</dl>
+<dl>
+<dt>
+<b>Parameters:</b>
+</dt>
+<dd>
+<dl>
+<dt>
+<tt><b>Value</b></tt>
+</dt>
+<dd>The double value.</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt>
+<b>Returns:</b>
+</dt>
+<dd>The created argument value object.</dd>
+</dl>
+</td>
+</tr>
+</table>
+<br>
+<hr>
+<br>
+<a name="pfcCreateBoolArgValue">
+<table cellpadding="5" cellspacing="0" border="0" class="method-def">
+<tr>
+<td class="return-type"><tt>static&nbsp;<a class="type" href="t-pfcArgument-ArgValue.html">pfcArgValue</a></tt></td><td class="func-name"><tt>pfcCreateBoolArgValue</tt></td><td class="func-params"><tt>
+ (boolean&nbsp;Value)
+</tt></td>
+</tr>
+</table>
+</a>
+<table border="0" class="method-doc">
+<tr>
+<td></td><td>
+<br>Creates a boolean argument value object.
+<br>
+<dl>
+<dt>
+<b>See Also:</b>
+</dt>
+<dd>
+<tt><b><a class="method" href="t-pfcArgument-Argument.html#Create">pfcArgument.Create()</a></b></tt>, <tt><b><a class="method" href="t-pfcProToolkit-Dll.html#ExecuteFunction">pfcDll.ExecuteFunction()</a></b></tt>
+</dd>
+</dl>
+<dl>
+<dt>
+<b>Parameters:</b>
+</dt>
+<dd>
+<dl>
+<dt>
+<tt><b>Value</b></tt>
+</dt>
+<dd>The boolean value.</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt>
+<b>Returns:</b>
+</dt>
+<dd>The created argument object.</dd>
+</dl>
+</td>
+</tr>
+</table>
+<br>
+<hr>
+<br>
+<a name="pfcCreateASCIIStringArgValue">
+<table cellpadding="5" cellspacing="0" border="0" class="method-def">
+<tr>
+<td class="return-type"><tt>static&nbsp;<a class="type" href="t-pfcArgument-ArgValue.html">pfcArgValue</a></tt></td><td class="func-name"><tt>pfcCreateASCIIStringArgValue</tt></td><td class="func-params"><tt>
+ (string&nbsp;Value)
+</tt></td>
+</tr>
+</table>
+</a>
+<table border="0" class="method-doc">
+<tr>
+<td></td><td>
+<br>Creates an ASCII string argument value object.
+<br>
+<br>This type will be passed to Creo Parametric TOOLKIT using the ProValueDataType of PRO_VALUE_TYPE_STRING.
+<br>
+<dl>
+<dt>
+<b>See Also:</b>
+</dt>
+<dd>
+<tt><b><a class="method" href="t-pfcArgument-Argument.html#Create">pfcArgument.Create()</a></b></tt>, <tt><b><a class="method" href="t-pfcProToolkit-Dll.html#ExecuteFunction">pfcDll.ExecuteFunction()</a></b></tt>
+</dd>
+</dl>
+<dl>
+<dt>
+<b>Parameters:</b>
+</dt>
+<dd>
+<dl>
+<dt>
+<tt><b>Value</b></tt>
+</dt>
+<dd>The character string.</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt>
+<b>Returns:</b>
+</dt>
+<dd>The created argument object.</dd>
+</dl>
+</td>
+</tr>
+</table>
+<br>
+<hr>
+<br>
+<a name="pfcCreateStringArgValue">
+<table cellpadding="5" cellspacing="0" border="0" class="method-def">
+<tr>
+<td class="return-type"><tt>static&nbsp;<a class="type" href="t-pfcArgument-ArgValue.html">pfcArgValue</a></tt></td><td class="func-name"><tt>pfcCreateStringArgValue</tt></td><td class="func-params"><tt>
+ (string&nbsp;Value)
+</tt></td>
+</tr>
+</table>
+</a>
+<table border="0" class="method-doc">
+<tr>
+<td></td><td>
+<br>Creates a string argument value object.
+<br>
+<br>This type will be passed to Creo Parametric TOOLKIT using the ProValueDataType of PRO_VALUE_TYPE_WSTRING.
+<br>
+<dl>
+<dt>
+<b>See Also:</b>
+</dt>
+<dd>
+<tt><b><a class="method" href="t-pfcArgument-Argument.html#Create">pfcArgument.Create()</a></b></tt>, <tt><b><a class="method" href="t-pfcProToolkit-Dll.html#ExecuteFunction">pfcDll.ExecuteFunction()</a></b></tt>
+</dd>
+</dl>
+<dl>
+<dt>
+<b>Parameters:</b>
+</dt>
+<dd>
+<dl>
+<dt>
+<tt><b>Value</b></tt>
+</dt>
+<dd>The string value.</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt>
+<b>Returns:</b>
+</dt>
+<dd>The created argument value object.</dd>
+</dl>
+</td>
+</tr>
+</table>
+<br>
+<hr>
+<br>
+<a name="pfcCreateSelectionArgValue">
+<table cellpadding="5" cellspacing="0" border="0" class="method-def">
+<tr>
+<td class="return-type"><tt>static&nbsp;<a class="type" href="t-pfcArgument-ArgValue.html">pfcArgValue</a></tt></td><td class="func-name"><tt>pfcCreateSelectionArgValue</tt></td><td class="func-params"><tt>
+ (<a class="type" href="t-pfcSelect-Selection.html">pfcSelection</a>&nbsp;Value)
+</tt></td>
+</tr>
+</table>
+</a>
+<table border="0" class="method-doc">
+<tr>
+<td></td><td>
+<br>Creates a new selection argument value object.
+<br>
+<dl>
+<dt>
+<b>See Also:</b>
+</dt>
+<dd>
+<tt><b><a class="method" href="t-pfcArgument-Argument.html#Create">pfcArgument.Create()</a></b></tt>, <tt><b><a class="method" href="t-pfcProToolkit-Dll.html#ExecuteFunction">pfcDll.ExecuteFunction()</a></b></tt>, <tt><b><tt><b><a class="func" href="t-pfcSelect-MpfcSelect.html#pfcCreateComponentSelection">MpfcSelect.CreateComponentSelection()</a></b></tt></b></tt>, <tt><b><tt><b><a class="func" href="t-pfcSelect-MpfcSelect.html#pfcCreateModelItemSelection">MpfcSelect.CreateModelItemSelection()</a></b></tt></b></tt>
+</dd>
+</dl>
+<dl>
+<dt>
+<b>Parameters:</b>
+</dt>
+<dd>
+<dl>
+<dt>
+<tt><b>Value</b></tt>
+</dt>
+<dd>The selection object.</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt>
+<b>Returns:</b>
+</dt>
+<dd>The created selection argument value object.</dd>
+</dl>
+</td>
+</tr>
+</table>
+<br>
+<hr>
+<br>
+<a name="pfcCreateTransformArgValue">
+<table cellpadding="5" cellspacing="0" border="0" class="method-def">
+<tr>
+<td class="return-type"><tt>static&nbsp;<a class="type" href="t-pfcArgument-ArgValue.html">pfcArgValue</a></tt></td><td class="func-name"><tt>pfcCreateTransformArgValue</tt></td><td class="func-params"><tt>
+ (<a class="type" href="t-pfcBase-Transform3D.html">pfcTransform3D</a>&nbsp;Value)
+</tt></td>
+</tr>
+</table>
+</a>
+<table border="0" class="method-doc">
+<tr>
+<td></td><td>
+<br>Creates a new transform argument value object.
+<br>
+<dl>
+<dt>
+<b>See Also:</b>
+</dt>
+<dd>
+<tt><b><a class="method" href="t-pfcArgument-Argument.html#Create">pfcArgument.Create()</a></b></tt>, <tt><b><a class="method" href="t-pfcProToolkit-Dll.html#ExecuteFunction">pfcDll.ExecuteFunction()</a></b></tt>, <tt><b><a class="method" href="t-pfcBase-Transform3D.html#Create">pfcTransform3D.Create()</a></b></tt>
+</dd>
+</dl>
+<dl>
+<dt>
+<b>Parameters:</b>
+</dt>
+<dd>
+<dl>
+<dt>
+<tt><b>Value</b></tt>
+</dt>
+<dd>The coordinate transformation.</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt>
+<b>Returns:</b>
+</dt>
+<dd>The created argument value object.</dd>
+</dl>
+</td>
+</tr>
+</table>
+<br>
+<hr>
+<br>
+<a name="pfcFindArgumentByLabel">
+<table cellpadding="5" cellspacing="0" border="0" class="method-def">
+<tr>
+<td class="return-type"><tt><a class="type" href="t-pfcArgument-Argument.html">pfcArgument</a></tt></td><td class="func-name"><tt>pfcFindArgumentByLabel</tt></td><td class="func-params"><tt>
+ (<a class="type" href="t-pfcArgument-Arguments.html">pfcArguments</a>&nbsp;ArgList, string&nbsp;Label)
+</tt></td>
+</tr>
+</table>
+</a>
+<table border="0" class="method-doc">
+<tr>
+<td></td><td>
+<br>&nbsp; <br>
+<dl>
+<dt>
+<b>Parameters:</b>
+</dt>
+<dd>
+<dl>
+<dt>
+<tt><b>ArgList</b></tt>
+</dt>
+<dd>&nbsp; </dd>
+<dt>
+<tt><b>Label</b></tt>
+</dt>
+<dd>&nbsp; </dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt>
+<b>Returns:</b>
+</dt>
+<dd>&nbsp; </dd>
+</dl>
+</td>
+</tr>
+</table>
+<br>
+</body>
+</html>

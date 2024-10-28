@@ -1,0 +1,148 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-9">
+      <meta name="ch:resourceid" content="creos_interactive_tool" scheme="atiChunkerMeta">
+      
+      
+      
+      
+      
+      
+      <link href="css/styler.css" rel="stylesheet" type="text/css">
+      <title>Creo.JS Testing Web Tool</title>
+   
+<SCRIPT LANGUAGE="JAVASCRIPT">
+  function findProperNode() { top.frames[0].document.apiwizard.manual("MANCREOS_INTERACTIVE_TOOL0", location.hash); }
+</SCRIPT>
+
+</head>
+   <body onLoad="findProperNode()">
+      
+         
+         <a name="0"> </a><div class=" x-title-65-0 x-title-65-1" combinedFontName="off" id="styler-id1.1.1.7.1" class="ChapterTitle">Creo.JS Testing Web Tool</div><span class=" x-prolog-1-0">
+            <div class=" x-metadata-1-0"><span class=" x-keywords-2-0"><a xmlns="" class="indexterm" name="1"></a><span class=" x-indexterm-1-0"></span></span></div></span><div class=" x-body-2-0">
+            <div class=" x-p-7-0">This section provides a brief overview of the testing web tool, which is available in the <span class=" x-ph-2-0" id="creos_interactive_tool_Creo.JSTestingWebTool-F956C283_Cr_10_9">Creo.JS</span> framework.
+            </div>
+         </div>
+         <div class=" x-topic-4-0 x-topic-4-1 x-topic-4-2" combinedFontName="off" id="creos_interactive_tool_Overview-F957058E_10_10">
+            
+            <a name="2"> </a><div class=" x-title-33-0 x-title-33-2" combinedFontName="off" id="styler-id1.1.1.7.4.1" class="Heading1">Overview</div>
+            <div class=" x-body-3-0">
+               <div class=" x-p-7-0">To help you test the <span class=" x-ph-2-0" id="creos_interactive_tool_Overview-F957058E_Creo.JS-E93153A_10_14">Creo.JS</span> scripts with current <span class=" x-ph-2-0" id="creos_interactive_tool_Overview-F957058E_PTCCreo-EC6F7D2_10_15">Creo</span> session, a testing web tool is provided with the <span class=" x-ph-2-0" id="creos_interactive_tool_Overview-F957058E_Creo.JS-E93153A_10_14">Creo.JS</span> installation. The tool provides an interactive user interface to work with <span class=" x-ph-2-0" id="creos_interactive_tool_Overview-F957058E_Creo.JS-E93153A_10_14">Creo.JS</span> APIs. You can test the APIs before using them in web applications. The page is called <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">script_engine_testing.html</span></span> and is available in <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">creojsweb</span></span> folder at <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;creojs_loadpoint&gt;</span></span>. To start using it, drag and drop the page in the <span class=" x-ph-2-0" id="creos_interactive_tool_Overview-F957058E_PTCCreo-EC6F7D2_10_15">Creo</span> embedded browser. You can add the page location to favorites also.
+               </div>
+               <div class=" x-fig-2-0 x-fig-2-2" id="styler-id1.1.1.7.4.2.2">
+                  <div class=" x-image-1-0 x-image-1-1"><img alt="Image" src="graphics/creojs_web_testing_tool.png"></div>
+                  <div class=" x-p-7-0">Figure 1</div>
+               </div>
+               <div class=" x-p-7-0">The page consists of four areas:
+                  <div class=" x-ul-1-0">
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-ph-2-0" id="creos_interactive_tool_Overview-F957058E_Creo.JS-E93153A_10_14">Creo.JS</span> scripts toolbar</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-ph-2-0" id="creos_interactive_tool_Overview-F957058E_Creo.JS-E93153A_10_14">Creo.JS</span> script edit area</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-ph-2-0" id="creos_interactive_tool_Overview-F957058E_Creo.JS-E93153A_10_14">Creo.JS</span> script execution toolbar</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-ph-2-0" id="creos_interactive_tool_Overview-F957058E_Creo.JS-E93153A_10_14">Creo.JS</span> script output area</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <div class=" x-p-7-0">To run a script, type the script in the editor and click <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Run</span></span>.
+               </div>
+               <div class=" x-p-7-0">The script is sent to <span class=" x-ph-2-0" id="creos_interactive_tool_Overview-F957058E_Creo.JS-E93153A_10_14">Creo.JS</span> engine and executed. After execution, the output generated by the script is printed in the output area. In the example shown
+                  in Figure 1, the following script is executed in the tool:
+               </div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">{
+  let session = pfcGetCurrentSession ();
+  print (session.GetEnvironmentVariable ("PRO_DIRECTORY"));
+}
+</span></pre><div class=" x-p-7-0">The following result is displayed in the output area:</div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">C:\Program Files\PTC\Creo 4.0\M080\Common Files</span></pre><div class=" x-p-7-0">Note that the script is included in curly braces. This prevents the variable definitions within the script to be populated
+                  into the page context, which can prevent the consecutive execution of the same script. If you do not add the curly braces,
+                  the script can be executed only once. If you try to run it for a second time you will get an error message.
+               </div>
+               <div class=" x-p-7-0">Every script executed by this page is executed in the very same context. Thus, after the script is executed the first time,
+                  the context has a new variable session defined in it. When the script is executed the second time, it tries to define already
+                  defined variable and fails. If we add { and } to the scripts, we limit the visibility area for variable session by the block
+                  specified by its boundaries { and }. Thus, after the script is executed the variable session is removed from context and can
+                  be reused.
+               </div>
+            </div>
+         </div>
+         <div class=" x-topic-8-0 x-topic-8-1 x-topic-8-2" id="styler-id1.1.1.7.5">
+            
+            <a name="3"> </a><div class=" x-title-33-0 x-title-33-2" combinedFontName="off" id="styler-id1.1.1.7.5.1" class="Heading1">Creo.JS Scripts Toolbar</div>
+            <div class=" x-body-3-0">
+               <div class=" x-p-7-0">To save a script that you executed in the tool, click <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Save As</span></span> in the <span class=" x-ph-2-0" id="creos_interactive_tool_Overview-F957058E_Creo.JS-E93153A_10_14">Creo.JS</span> scripts toolbar. Specify a name for the script. You can specify a name with relative path in it. For example, if you specify
+                  the name as <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">test/test_env_var.js</span></span>, the script is stored in a subdirectory <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">test</span></span> of the script directory.
+               </div>
+               <div class=" x-fig-2-0 x-fig-2-2" id="styler-id1.1.1.7.5.2.2">
+                  <div class=" x-image-1-0 x-image-1-1"><img alt="Image" src="graphics/creojs_scripts_toolbar.png"></div>
+               </div>
+               <div class=" x-p-7-0"><span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Scripts</span></span> lists all the saved scripts. If you select a script from the list, it is loaded in the script editor. If you modify the script,
+                  the <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Save</span></span> button is enabled.
+               </div>
+               <div class=" x-p-7-0">The <span class=" x-ph-2-0" id="creos_interactive_tool_Overview-F957058E_Creo.JS-E93153A_10_14">Creo.JS</span> installation includes a library of sample <span class=" x-ph-2-0" id="creos_interactive_tool_Overview-F957058E_Creo.JS-E93153A_10_14">Creo.JS</span> scripts, which can you can execute in the web tool.
+               </div>
+            </div>
+         </div>
+         <div class=" x-topic-8-0 x-topic-8-1 x-topic-8-2" id="styler-id1.1.1.7.6">
+            
+            <a name="4"> </a><div class=" x-title-33-0 x-title-33-2" combinedFontName="off" id="styler-id1.1.1.7.6.1" class="Heading1">Creo.JS Scripts Execution Toolbar</div>
+            <div class=" x-body-3-0">
+               <div class=" x-p-7-0">To execute the script in the editor, click <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Run</span></span>. It sends the script to the <span class=" x-ph-2-0" id="creos_interactive_tool_Overview-F957058E_Creo.JS-E93153A_10_14">Creo.JS</span> engine. If the script executes successfully, the output of the script appears in the area at the bottom of the page. <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Clear</span></span> button enables you to clear the area, and <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Clear and Run</span></span> first clears the output area and then executes the script.
+               </div>
+               <div class=" x-fig-2-0 x-fig-2-2" id="styler-id1.1.1.7.6.2.2">
+                  <div class=" x-image-1-0 x-image-1-1"><img alt="Image" src="graphics/creojs_web_testing_tool_execution.png"></div>
+               </div>
+               <div class=" x-p-7-0">The tool also has a box field where you can execute single line scripts. This gives the user the ability to execute a single
+                  command in the same <span class=" x-ph-2-0" id="creos_interactive_tool_Overview-F957058E_Creo.JS-E93153A_10_14">Creo.JS</span> context. For example, you can get information about an element type by running <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">help()</span></span> method. For example, <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">help(</span><span xmlns="" class="cf-Monospace-combined-Default">&#8220;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">)</span></span> opens a new window with information about the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession</span></span> type. Similarly, you can select a text in the script editor and click <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Help</span></span> on the <span class=" x-ph-2-0" id="creos_interactive_tool_Overview-F957058E_Creo.JS-E93153A_10_14">Creo.JS</span> scripts toolbar. This will also run the function <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">help(selected_text)</span></span>.
+               </div>
+               <div class=" x-p-7-0"><span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Reset and Run</span></span> set a new Javascript context and then execute the script. For example, the following script can be executed sequentially
+                  time after time if you use <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Reset and Run</span></span>. In this case, the page is reloaded by first terminating the current <span class=" x-ph-2-0" id="creos_interactive_tool_Overview-F957058E_Creo.JS-E93153A_10_14">Creo.JS</span> context and initializing a new one:
+               </div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">let session = pfcGetCurrentSession ();
+  print (session.GetEnvironmentVariable ("PRO_DIRECTORY"));
+</span></pre></div>
+         </div>
+      </div>
+   </body>
+</html>

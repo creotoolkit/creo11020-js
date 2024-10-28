@@ -1,0 +1,1598 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-9">
+      <meta name="ch:resourceid" content="JSession" scheme="atiChunkerMeta">
+      
+      
+      
+      
+      
+      
+      <link href="css/styler.css" rel="stylesheet" type="text/css">
+      <title>Session Objects</title>
+   
+<SCRIPT LANGUAGE="JAVASCRIPT">
+  function findProperNode() { top.frames[0].document.apiwizard.manual("MANJSESSION0", location.hash); }
+</SCRIPT>
+
+</head>
+   <body onLoad="findProperNode()">
+      
+         
+         <a name="0"> </a><div class=" x-title-65-0 x-title-65-1" combinedFontName="off" id="styler-id1.1.1.10.1" class="ChapterTitle">Session Objects</div>
+         <div class=" x-body-2-0">
+            <div class=" x-p-7-0">This <span class=" x-ph-2-0"><span xmlns="" profilecode="100000000">section</span></span> describes how to program on the session level using <span class=" x-ph-2-0" id="JSession_SessionObjects-BA1E074A_Creo.JS-E93153AB_13_11">Creo.JS</span>.
+            </div>
+         </div>
+         <div class=" x-topic-4-0 x-topic-4-1 x-topic-4-2" combinedFontName="off" id="JSession_OverviewOfSessionObjects-BA1E0575_13_12">
+            
+            <a name="1"> </a><div class=" x-title-33-0 x-title-33-2" combinedFontName="off" id="styler-id1.1.1.10.3.1" class="Heading1">Overview of Session Objects</div>
+            <div class=" x-body-3-0">
+               <div class=" x-p-7-0">The <span class=" x-ph-2-0" id="JSession_OverviewOfSessionObjects-BA1E0575_PTCCreoParame_13_16"><span xmlns="" profilecode="1">Creo Parametric</span></span> <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession</span></span> object, contained in the class <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession</span></span>, is the highest level object in <span class=" x-ph-2-0" id="JSession_OverviewOfSessionObjects-BA1E0575_Creo.JS-E9315_13_20">Creo.JS</span>. Any program that accesses data from <span class=" x-ph-2-0" id="JSession_OverviewOfSessionObjects-BA1E0575_PTCCreoParame_13_16"><span xmlns="" profilecode="1">Creo Parametric</span></span> must first get a handle to the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession</span></span> object before accessing more specific data.
+               </div>
+               <div class=" x-p-7-0">The <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession</span></span> object contains methods to perform the following operations:
+               </div>
+               <div class=" x-ul-2-0">
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                           <td><span class=" x-p-4-0">Accessing models and windows, described in the Models and Windows chapters.</span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                           <td><span class=" x-p-4-0">Working with the <span class=" x-ph-2-0" id="JSession_OverviewOfSessionObjects-BA1E0575_PTCCreoParame_13_16"><span xmlns="" profilecode="1">Creo Parametric</span></span> user interface.</span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                           <td><span class=" x-p-4-0">Allowing interactive selection of items within the session.</span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                           <td><span class=" x-p-4-0">Accessing global settings such as line styles, colors, and configuration options.</span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <div class=" x-p-7-0">The following sections describe these operations.</div>
+            </div>
+         </div>
+         <div class=" x-topic-8-0 x-topic-8-1 x-topic-8-2" id="styler-id1.1.1.10.4">
+            
+            <a name="2"> </a><div class=" x-title-33-0 x-title-33-2" combinedFontName="off" id="styler-id1.1.1.10.4.1" class="Heading1">Getting the Session Object</div>
+            <div class=" x-body-3-0">
+               <div class=" x-p-7-0">Methods Introduced:</div>
+               <div class=" x-ul-2-0">
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; "></td>
+                           <td><span class=" x-p-4-0"><a name="3"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcGetCurrentSessionWithCompatibility()</li></span></span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; "></td>
+                           <td><span class=" x-p-4-0"><a name="4"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcGetCurrentSession()</li></span></span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <div class=" x-p-7-0">For every application, <span class=" x-ph-2-0" id="JSession_OverviewOfSessionObjects-BA1E0575_PTCCreo-EC6F7_13_50">Creo</span> assigns a unique session. The session contains license information, the compatibility information as a <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcCreoCompatibility</span></span> enumerated data type, and other additional data of the application. When a session is assigned to an application, <span class=" x-ph-2-0" id="JSession_OverviewOfSessionObjects-BA1E0575_PTCCreo-EC6F7_13_50">Creo</span> sets the compatibility to <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">CompatibilityUndefined</span></span> in the associated <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcAppInfo</span></span> object. You must set the compatibility of the application before working with sessions. To set the compatibility, call the
+                  method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcGetCurrentSessionWithCompatibility()</span></span>. Use the values defined in the enumerated data type <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcCreoCompatibility</span></span> to set the compatibility of the application.
+               </div>
+               <div class=" x-p-7-0">Use the method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcGetCurrentSession()</span></span> to get the current <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession</span></span> object in synchronous mode. If the compatibility is not set, the method throws the exception <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcXCompatibilityNotSet</span></span>.
+               </div>
+               <div class=" x-p-7-0"> The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcGetProESession()</span></span> is deprecated. Use the method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcGetCurrentSession()</span></span> instead. If you call this method without setting the compatibility, the method sets the compatibility to <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">C3Compatible</span></span>. This setting ensures forward compatibility of the <span class=" x-ph-2-0" id="JSession_OverviewOfSessionObjects-BA1E0575_PTCCreo-EC6F7_13_50">Creo</span> applications. If you set a specific compatibility using the method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcGetCurrentSessionWithCompatibility()</span></span>, and call the method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcGetCurrentSession()</span></span>, then all calls to <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcGetCurrentSession()</span></span> return the session with the set compatibility.
+               </div>
+               <div class=" x-note-2-0 x-note-2-3">
+                  <div class=" x--ufe-note-1-0 x--ufe-note-1-1" combinedFontName="off">Note</div>
+                  <div class=" x-p-7-0">You can make multiple calls to this method, but each call gives you a handle to the same object.</div>
+               </div>
+            </div>
+            <div class=" x-topic-11-0 x-topic-11-1" id="styler-id1.1.1.10.4.3">
+               
+               <a name="5"> </a><div class=" x-title-27-0 x-title-27-2" combinedFontName="off" id="styler-id1.1.1.10.4.3.1" class="Heading2">Getting Session Information</div>
+               <div class=" x-body-3-0">
+                  <div class=" x-p-7-0">Methods Introduced:</div>
+                  <div class=" x-ul-2-0">
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="6"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcGetProEArguments()</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="7"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcGetProEVersion()</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="8"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcGetProEBuildCode()</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <div class=" x-p-7-0">The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcGetProEArguments()</span></span> returns an array containing the command-line arguments passed to <span class=" x-ph-2-0" id="JSession_OverviewOfSessionObjects-BA1E0575_PTCCreoParame_13_16"><span xmlns="" profilecode="1">Creo Parametric</span></span>, if these arguments follow one of two formats:
+                  </div>
+                  <div class=" x-ul-2-0">
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0">Any argument starting with a plus sign (+) followed by a letter character.</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0">Any argument starting with a minus (-) followed by a capitalized letter.</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <div class=" x-p-7-0">The first argument passed in the array is the full path to the <span class=" x-ph-2-0" id="JSession_OverviewOfSessionObjects-BA1E0575_PTCCreoParame_13_16"><span xmlns="" profilecode="1">Creo Parametric</span></span> executable.
+                  </div>
+                  <div class=" x-p-7-0">The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcGetProEVersion()</span></span> returns a string that represents the <span class=" x-ph-2-0" id="JSession_OverviewOfSessionObjects-BA1E0575_PTCCreoParame_13_16"><span xmlns="" profilecode="1">Creo Parametric</span></span> version, for example &#8220;Wildfire&#8221;.
+                  </div>
+                  <div class=" x-p-7-0">The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcGetProEBuildCode()</span></span> returns a string that represents the build code of the <span class=" x-ph-2-0" id="JSession_OverviewOfSessionObjects-BA1E0575_PTCCreoParame_13_16"><span xmlns="" profilecode="1">Creo Parametric</span></span> session.
+                  </div>
+                  <div class=" x-note-2-0 x-note-2-3">
+                     <div class=" x--ufe-note-1-0 x--ufe-note-1-1" combinedFontName="off">Note</div>
+                     <div class=" x-p-7-0">The preceding methods can only access information in synchronous mode.</div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class=" x-topic-8-0 x-topic-8-1 x-topic-8-2" id="JSession_Directories-BA112AB4_13_107">
+            
+            <a name="9"> </a><div class=" x-title-33-0 x-title-33-2" combinedFontName="off" id="styler-id1.1.1.10.5.1" class="Heading1">Directories</div>
+            <div class=" x-body-3-0">
+               <div class=" x-p-7-0">Methods Introduced:</div>
+               <div class=" x-ul-2-0">
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; "></td>
+                           <td><span class=" x-p-4-0"><a name="10"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcBaseSession.GetCurrentDirectory()</li></span></span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; "></td>
+                           <td><span class=" x-p-4-0"><a name="11"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcBaseSession.ChangeDirectory()</li></span></span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <div class=" x-p-7-0">The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcBaseSession.GetCurrentDirectory()</span></span> returns the absolute path name for the current working directory of <span class=" x-ph-2-0" id="JSession_Directories-BA112AB4_PTCCreoParametric-E96269BB_13_120"><span xmlns="" profilecode="1">Creo Parametric</span></span>.
+               </div>
+               <div class=" x-p-7-0">The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcBaseSession.ChangeDirectory()</span></span> changes <span class=" x-ph-2-0" id="JSession_Directories-BA112AB4_PTCCreoParametric-E96269BB_13_120"><span xmlns="" profilecode="1">Creo Parametric</span></span> to another working directory.
+               </div>
+            </div>
+            <div class=" x-topic-11-0 x-topic-11-1" id="JSession_FileHandling-C47B8AD1_13_126">
+               
+               <a name="12"> </a><div class=" x-title-27-0 x-title-27-2" combinedFontName="off" id="styler-id1.1.1.10.5.3.1" class="Heading2">File Handling</div>
+               <div class=" x-body-3-0">
+                  <div class=" x-p-7-0">Methods Introduced:</div>
+                  <div class=" x-ul-2-0">
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="13"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcBaseSession.ListFiles()</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="14"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcBaseSession.ListSubdirectories()</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <div class=" x-p-7-0"> The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcBaseSession.ListFiles()</span></span> returns a list of files in a directory, given the directory path. You can filter the list to include only files of a particular
+                     type, as specified by the file extension. 
+                  </div>
+                  <div class=" x-p-7-0">The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcBaseSession.ListFiles()</span></span> can also list instance objects when accessing <span class=" x-ph-2-0" id="JSession_FileHandling-C47B8AD1_PTCWindchill-EC6F9846_13_141">Windchill</span> workspaces or folders. A PDM location for workspace or commonspace, must be passed as the directory path. The following options
+                     are added in the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcFileListOpt</span></span> enumerated type:
+                  </div>
+                  <div class=" x-ul-2-0">
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">FILE_LIST_ALL</span></span>&#8212;Lists all the files. It may also include multiple versions of the same file.</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">FILE_LIST_LATEST</span></span>&#8212;Lists only the latest version of each file.</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">FILE_LIST_ALL_INST</span></span>&#8212;Same as the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">FILE_LIST_ALL</span></span> option. It returns instances only for PDM locations.</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">FILE_LIST_LATEST_INST</span></span>&#8212;Same as the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">FILE_LIST_LATEST</span></span> option. It returns instances only for PDM locations.</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <div class=" x-p-7-0">The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcBaseSession.ListSubdirectories()</span></span> returns the subdirectories in a given directory location.
+                  </div>
+               </div>
+            </div>
+            <div class=" x-topic-11-0 x-topic-11-1" id="JSession_ConfigurationOptions-BA10CBC4_13_160">
+               
+               <a name="15"> </a><div class=" x-title-27-0 x-title-27-2" combinedFontName="off" id="styler-id1.1.1.10.5.4.1" class="Heading2">Configuration Options</div>
+               <div class=" x-abstract-1-0"><a xmlns="" class="indexterm" name="16"></a><span class=" x-indexterm-1-0"></span></div>
+               <div class=" x-body-3-0">
+                  <div class=" x-p-7-0">Methods Introduced:</div>
+                  <div class=" x-ul-2-0">
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="17"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcBaseSession.GetConfigOptionValues()</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="18"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcBaseSession.SetConfigOption()</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="19"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcBaseSession.LoadConfigFile()</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <div class=" x-p-7-0">You can access configuration options programmatically using the methods described in this section.</div>
+                  <div class=" x-p-7-0">Use the method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcBaseSession.GetConfigOptionValues()</span></span> to retrieve the value of a specified configuration file option. Pass the <span class=" x-parmname-3-0">Name</span> of the configuration file option as the input to this method. The method returns an array of values that the configuration
+                     file option is set to. It returns a single value if the configuration file option is not a multivalued option. The method
+                     returns a null if the specified configuration file option does not exist.
+                  </div>
+                  <div class=" x-p-7-0">The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcBaseSession.SetConfigOption()</span></span> is used to set the value of a specified configuration file option. If the option is a multi-value option, it adds a new value
+                     to the array of values that already exist.
+                  </div>
+                  <div class=" x-p-7-0">The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcBaseSession.LoadConfigFile()</span></span> loads an entire configuration file into <span class=" x-ph-2-0" id="JSession_ConfigurationOptions-BA10CBC4_PTCCreoParametric_13_184"><span xmlns="" profilecode="1">Creo Parametric</span></span>.
+                  </div>
+               </div>
+            </div>
+            <div class=" x-topic-11-0 x-topic-11-1" id="JSession_Macros-BA1125F0_13_186">
+               
+               <a name="20"> </a><div class=" x-title-27-0 x-title-27-2" combinedFontName="off" id="styler-id1.1.1.10.5.5.1" class="Heading2">Macros</div>
+               <div class=" x-abstract-1-0"><a xmlns="" class="indexterm" name="21"></a><span class=" x-indexterm-1-0"></span></div>
+               <div class=" x-body-3-0">
+                  <div class=" x-p-7-0">Method Introduced:</div>
+                  <div class=" x-ul-2-0">
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="22"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcBaseSession.RunMacro()</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <div class=" x-p-7-0">The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcBaseSession.RunMacro()</span></span> runs a macro string. A <span class=" x-ph-2-0" id="JSession_Macros-BA1125F0_Creo.JS-E93153AB_13_198">Creo.JS</span> macro string is equivalent to a <span class=" x-ph-2-0" id="JSession_Macros-BA1125F0_PTCCreoParametric-E96269BB_13_199"><span xmlns="" profilecode="1">Creo Parametric</span></span> mapkey minus the key sequence and the mapkey name. To generate a macro string, create a mapkey in <span class=" x-ph-2-0" id="JSession_Macros-BA1125F0_PTCCreoParametric-E96269BB_13_199"><span xmlns="" profilecode="1">Creo Parametric</span></span>. Refer to the <span class=" x-ph-2-0" id="JSession_Macros-BA1125F0_PTCCreoParametric-E96269BB_13_199"><span xmlns="" profilecode="1">Creo Parametric</span></span> online help for more information about creating a mapkey.
+                  </div>
+                  <div class=" x-p-7-0">Copy the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Value</span></span> of the generated mapkey Option from the <span class=" x-menucascade-1-0"><span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Tools</span></span><span class=" x-uicontrol-3-0" combinedFontName="Sanserif-combined"><span class=" x--ufe-menuchoicekeep-1-0"><span xmlns="" class="cf-Sanserif-combined-Default">&nbsp;</span><span style="font-family: 'Arial Unicode MS'; "><span xmlns="" class="cf-Sanserif-combined-Default">&#9654; </span></span></span><span style="font-size: 1pt; "> </span><span xmlns="" class="cf-Sanserif-combined-Default">Options</span></span></span> dialog box. An example <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Value</span></span> is as follows:
+                  </div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">$F2 @MAPKEY_LABELtest;
+~ Activate `main_dlg_cur` `ProCmdModelNew.file`;
+~ Activate `new` `OK`;</span></pre><div class=" x-p-7-0">The key sequence is <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">$F2</span></span>. The mapkey name is <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">@MAPKEY_LABELtest</span></span>. The remainder of the string following the first semicolon is the macro string that should be passed to the method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcBaseSession.RunMacro()</span></span>.
+                  </div>
+                  <div class=" x-p-7-0">In this case, it is as follows:</div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">~ Activate `main_dlg_cur` `ProCmdModelNew.file`;
+~ Activate `new` `OK`;</span></pre><div class=" x-note-2-0 x-note-2-3">
+                     <div class=" x--ufe-note-1-0 x--ufe-note-1-1" combinedFontName="off">Note</div>
+                     <div class=" x-p-7-0">Creating or editing the macro string manually is not supported as the mapkeys are not a supported scripting language. The
+                        syntax is not defined for users and is not guaranteed to remain constant across different versions of <span class=" x-ph-2-0" id="JSession_Macros-BA1125F0_PTCCreoParametric-E96269BB_13_199"><span xmlns="" profilecode="1">Creo Parametric</span></span>.
+                     </div>
+                  </div>
+                  <div class=" x-p-7-0">Macros are executed from synchronous mode only when control returns to <span class=" x-ph-2-0" id="JSession_Macros-BA1125F0_PTCCreoParametric-E96269BB_13_199"><span xmlns="" profilecode="1">Creo Parametric</span></span> from the <span class=" x-ph-2-0" id="JSession_Macros-BA1125F0_Creo.JS-E93153AB_13_198">Creo.JS</span> program. Macros are stored in reverse order, last in, first out.
+                  </div>
+               </div>
+            </div>
+            <div class=" x-topic-11-0 x-topic-11-1" id="JSession_ColorsAndLineStyles-BA113664_13_226">
+               
+               <a name="23"> </a><div class=" x-title-27-0 x-title-27-2" combinedFontName="off" id="styler-id1.1.1.10.5.6.1" class="Heading2">Colors and Line Styles</div>
+               <div class=" x-abstract-1-0"><a xmlns="" class="indexterm" name="24"></a><span class=" x-indexterm-1-0"></span><a xmlns="" class="indexterm" name="25"></a><span class=" x-indexterm-1-0"></span></div>
+               <div class=" x-body-3-0">
+                  <div class=" x-p-7-0">Methods Introduced:</div>
+                  <div class=" x-ul-2-0">
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="26"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcBaseSession.SetStdColorFromRGB()</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="27"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcBaseSession.GetRGBFromStdColor()</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="28"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcBaseSession.SetTextColor()</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="29"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcBaseSession.SetLineStyle()</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <div class=" x-p-7-0">These methods control the general display of a <span class=" x-ph-2-0" id="JSession_ColorsAndLineStyles-BA113664_PTCCreoParametric-_13_248"><span xmlns="" profilecode="1">Creo Parametric</span></span> session. 
+                  </div>
+                  <div class=" x-p-7-0">Use the method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcBaseSession.SetStdColorFromRGB()</span></span> to customize any of the <span class=" x-ph-2-0" id="JSession_ColorsAndLineStyles-BA113664_PTCCreoParametric-_13_248"><span xmlns="" profilecode="1">Creo Parametric</span></span> standard colors.
+                  </div>
+                  <div class=" x-p-7-0">To change the color of any text in the window, use the method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcBaseSession.SetTextColor()</span></span>.
+                  </div>
+                  <div class=" x-p-7-0">To change the appearance of nonsolid lines such as datums, use the method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcBaseSession.SetLineStyle()</span></span>.
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class=" x-topic-8-0 x-topic-8-1 x-topic-8-2" id="JSession_AccessingTheProENGINEERInterface-BA14223B_13_258">
+            
+            <a name="30"> </a><div class=" x-title-33-0 x-title-33-2" combinedFontName="off" id="styler-id1.1.1.10.6.1" class="Heading1">Accessing the  Interface</div>
+            <div class=" x-abstract-1-0"><a xmlns="" class="indexterm" name="31"></a><span class=" x-indexterm-1-0"></span></div>
+            <div class=" x-body-3-0">
+               <div class=" x-p-7-0">The <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession</span></span> object has methods that work with the <span class=" x-ph-2-0" id="JSession_AccessingTheProENGINEERInterface-BA14223B_PTCCr_13_267"><span xmlns="" profilecode="1">Creo Parametric</span></span> interface. These methods provide access to the message window.
+               </div>
+            </div>
+            <div class=" x-topic-11-0 x-topic-11-1" id="JSession_TheTextMessageFile-BA140827_13_269">
+               
+               <a name="32"> </a><div class=" x-title-27-0 x-title-27-2" combinedFontName="off" id="styler-id1.1.1.10.6.4.1" class="Heading2">The Text Message File</div>
+               <div class=" x-abstract-1-0"><a xmlns="" class="indexterm" name="33"></a><span class=" x-indexterm-1-0"></span><a xmlns="" class="indexterm" name="34"></a><span class=" x-indexterm-1-0"></span><a xmlns="" class="indexterm" name="35"></a><span class=" x-indexterm-1-0"></span></div>
+               <div class=" x-body-3-0">
+                  <div class=" x-p-7-0">A text message file is where you define strings that appear in the <span class=" x-ph-2-0" id="JSession_TheTextMessageFile-BA140827_PTCCreoParametric-E_13_279"><span xmlns="" profilecode="1">Creo Parametric</span></span> user interface. This includes the strings on the command buttons that you add to the <span class=" x-ph-2-0" id="JSession_TheTextMessageFile-BA140827_PTCCreoParametric-E_13_279"><span xmlns="" profilecode="1">Creo Parametric</span></span> number, the help string that appears when a cursor is positioned over such a command button, and text strings that appear
+                     in the Message Window. You have the option of including a translation for each string in the text message file.
+                  </div>
+                  <div class=" x-note-2-0 x-note-2-3">
+                     <div class=" x--ufe-note-1-0 x--ufe-note-1-1" combinedFontName="off">Note</div><span xmlns="" profilecode="10000000000000000">
+                        <div class=" x-p-7-0">Remember that <span class=" x-ph-2-0" id="JSession_TheTextMessageFile-BA140827_Creo.JS-E93153AB_13_285">Creo.JS</span> applications, as unregistered web pages, do not currently support the setting of the <span class=" x-ph-2-0" id="JSession_TheTextMessageFile-BA140827_PTCCreoParametric-E_13_279"><span xmlns="" profilecode="1">Creo Parametric</span></span> text directory. All the resource files for messages must be located under <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">$PRO_DIRECTORY/text</span></span> folder. You can force <span class=" x-ph-2-0" id="JSession_TheTextMessageFile-BA140827_PTCCreoParametric-E_13_279"><span xmlns="" profilecode="1">Creo Parametric</span></span> to load a message file by registering a <span class=" x-ph-2-0" id="JSession_TheTextMessageFile-BA140827_PTCCreoParametricTo_13_291">Creo TOOLKIT</span> or application using the web page, and calling a function or method that requires the message file.  After the file is loaded
+                           by <span class=" x-ph-2-0" id="JSession_TheTextMessageFile-BA140827_PTCCreoParametric-E_13_279"><span xmlns="" profilecode="1">Creo Parametric</span></span>, <span class=" x-ph-2-0" id="JSession_TheTextMessageFile-BA140827_Creo.JS-E93153AB_13_285">Creo.JS</span> applications may use any of its key strings for displaying messages in the message window.
+                        </div></span></div>
+               </div>
+               <div class=" x-topic-11-0 x-topic-11-1" id="JSession_RestrictionsOnTheTextMessageFile-BA1405D8_13_295">
+                  
+                  <div class=" x-title-22-0 x-title-22-1" combinedFontName="off" id="styler-id1.1.1.10.6.4.4.1">Restrictions on the Text Message File</div>
+                  <div class=" x-abstract-1-0"><a xmlns="" class="indexterm" name="36"></a><span class=" x-indexterm-1-0"></span><a xmlns="" class="indexterm" name="37"></a><span class=" x-indexterm-1-0"></span><a xmlns="" class="indexterm" name="38"></a><span class=" x-indexterm-1-0"></span></div>
+                  <div class=" x-body-3-0">
+                     <div class=" x-p-7-0">When you name your message file, ensure the following:</div>
+                     <div class=" x-ul-2-0">
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0">Name of the file is 30 characters or less, including the extension.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0">Name of the file contains lower-case characters only.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0">File extension is three characters.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0">Version number is in the range 1 to 9999.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0">All message file names and all message key strings are unique across all applications that run with <span class=" x-ph-2-0" id="JSession_RestrictionsOnTheTextMessageFile-BA1405D8_PTCCr_13_317"><span xmlns="" profilecode="1">Creo Parametric</span></span>. Duplicate message file names or message key strings can cause unexpected results in <span class=" x-ph-2-0" id="JSession_RestrictionsOnTheTextMessageFile-BA1405D8_PTCCr_13_317"><span xmlns="" profilecode="1">Creo Parametric</span></span>. To avoid conflicts with the names of <span class=" x-ph-2-0" id="JSession_RestrictionsOnTheTextMessageFile-BA1405D8_PTCCr_13_317"><span xmlns="" profilecode="1">Creo Parametric</span></span> or foreign application message files or message key strings, PTC recommends that you choose a prefix unique to your application.
+                                       Then, prepend that prefix to the file name for each message and to the key string for each message corresponding to that application.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                     <div class=" x-note-2-0 x-note-2-3">
+                        <div class=" x--ufe-note-1-0 x--ufe-note-1-1" combinedFontName="off">Note</div>
+                        <div class=" x-p-7-0">Message files are loaded into <span class=" x-ph-2-0" id="JSession_RestrictionsOnTheTextMessageFile-BA1405D8_PTCCr_13_317"><span xmlns="" profilecode="1">Creo Parametric</span></span> only once during a session. If you make a change to the message file while <span class=" x-ph-2-0" id="JSession_RestrictionsOnTheTextMessageFile-BA1405D8_PTCCr_13_317"><span xmlns="" profilecode="1">Creo Parametric</span></span> is running you must exit and restart <span class=" x-ph-2-0" id="JSession_RestrictionsOnTheTextMessageFile-BA1405D8_PTCCr_13_317"><span xmlns="" profilecode="1">Creo Parametric</span></span> before the change takes effect.
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class=" x-topic-11-0 x-topic-11-1" id="JSession_ContentsOfTheMessageFile-BA141DD9_13_331">
+                  
+                  <div class=" x-title-22-0 x-title-22-1" combinedFontName="off" id="styler-id1.1.1.10.6.4.5.1">Contents of the Message File</div>
+                  <div class=" x-abstract-1-0"><a xmlns="" class="indexterm" name="39"></a><span class=" x-indexterm-1-0"></span><a xmlns="" class="indexterm" name="40"></a><span class=" x-indexterm-1-0"></span></div>
+                  <div class=" x-body-3-0">
+                     <div class=" x-p-7-0">The message file consists of groups of four lines, one group for each message you want to write. The four lines are as follows:</div>
+                     <div class=" x-ol-6-0">
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-11-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0.00em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">1.</td>
+                                 <td><span class=" x-p-4-0">A string that acts as the identifier for the message. This keyword must be unique for all <span class=" x-ph-2-0" id="JSession_ContentsOfTheMessageFile-BA141DD9_PTCCreoParame_13_344"><span xmlns="" profilecode="1">Creo Parametric</span></span> messages.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-15-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0.00em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">2.</td>
+                                 <td><span class=" x-p-4-0">The string that will be substituted for the identifier.</span><div class=" x-p-5-0">This string can include placeholders for run-time information stored in a <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">stringseq</span></span> object which is shown in Writing Messages to the Message Window.
+                                    </div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-15-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0.00em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">3.</td>
+                                 <td><span class=" x-p-4-0">The translation of the message into another language. This can be blank.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-12-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0.00em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">4.</td>
+                                 <td><span class=" x-p-4-0">An intentionally blank line reserved for future extensions.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class=" x-topic-11-0 x-topic-11-1" id="JSession_WritingAMessageUsingAMessagePop-upD-BA19C75B_13_354">
+               
+               <a name="41"> </a><div class=" x-title-27-0 x-title-27-2" combinedFontName="off" id="styler-id1.1.1.10.6.5.1" class="Heading2">Writing a Message Using a Message Pop-up Dialog Box</div>
+               <div class=" x-body-3-0">
+                  <div class=" x-p-7-0">Method and Properties Introduced:</div>
+                  <div class=" x-ul-2-0">
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="42"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcSession.UIShowMessageDialog()</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="43"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcMessageDialogOptions.Buttons</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="44"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcMessageDialogOptions.DefaultButton</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="45"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcMessageDialogOptions.DialogLabel</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="46"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcMessageDialogOptions.MessageDialogType</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <div class=" x-p-7-0">The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.UIShowMessageDialog()</span></span> displays the UI message dialog. The input arguments to the method are:
+                  </div>
+                  <div class=" x-ul-2-0">
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-parmname-3-0">Message</span>&#8212;The message text to be displayed in the dialog.</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-parmname-3-0">Options</span>&#8212;An instance of the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcMessageDialogOptions</span></span> containing other options for the resulting displayed message. If this is not supplied, the dialog shows a default message
+                                    dialog with an <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Info</span></span> classification and an <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">OK</span></span> button. If this is not to be null, create an instance of this options type with <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcMessageDialogOptions.Create()</span></span>. You can set the following options:</span><div class=" x-ul-2-0">
+                                    <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                       <col style="width: 0em">
+                                       <col style="width: 18pt">
+                                       <col>
+                                       <tbody>
+                                          <tr valign="baseline">
+                                             <td align="right"></td>
+                                             <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                             </td>
+                                             <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Buttons</span></span>&#8212;Specifies an array of buttons to include in the dialog. If not supplied, the dialog includes only the <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">OK</span></span> button. Use the property <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcMessageDialogOptions.Buttons</span></span> to set this option.</span></td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                    <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                       <col style="width: 0em">
+                                       <col style="width: 18pt">
+                                       <col>
+                                       <tbody>
+                                          <tr valign="baseline">
+                                             <td align="right"></td>
+                                             <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                             </td>
+                                             <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">DefaultButton</span></span>&#8212;Specifies the identifier of the default button for the dialog box. This must match one of the available buttons. Use the
+                                                   property <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcMessageDialogOptions.DefaultButton</span></span> to set this option.</span></td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                    <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                       <col style="width: 0em">
+                                       <col style="width: 18pt">
+                                       <col>
+                                       <tbody>
+                                          <tr valign="baseline">
+                                             <td align="right"></td>
+                                             <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                             </td>
+                                             <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">DialogLabel</span></span>&#8212;The text to display as the title of the dialog box. If not supplied, the label is the English string <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Info</span></span>. Use the property <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcMessageDialogOptions.DialogLabel</span></span> to set this option.</span></td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                    <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                       <col style="width: 0em">
+                                       <col style="width: 18pt">
+                                       <col>
+                                       <tbody>
+                                          <tr valign="baseline">
+                                             <td align="right"></td>
+                                             <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                             </td>
+                                             <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">MessageDialogType</span></span>&#8212;The type of icon to be displayed with the dialog box (<span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Info</span></span>, <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Prompt</span></span>, <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Warning</span></span>, or <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Error</span></span>). If not supplied, an <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Info</span></span> icon is used. Use the property <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcMessageDialogOptions.MessageDialogType</span></span> to set this option.</span></td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                 </div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
+            <div class=" x-topic-11-0 x-topic-11-1" id="JSession_AccessingTheMessageWindow-BA19DCDC_13_411">
+               
+               <a name="47"> </a><div class=" x-title-27-0 x-title-27-2" combinedFontName="off" id="styler-id1.1.1.10.6.6.1" class="Heading2">Accessing the Message Window</div>
+               <div class=" x-abstract-1-0"><a xmlns="" class="indexterm" name="48"></a><span class=" x-indexterm-1-0"></span></div>
+               <div class=" x-body-3-0">
+                  <div class=" x-p-7-0">The following sections describe how to access the message window using <span class=" x-ph-2-0" id="JSession_AccessingTheMessageWindow-BA19DCDC_Creo.JS-E931_13_418">Creo.JS</span>. The topics are as follows:
+                  </div>
+                  <div class=" x-ul-2-0">
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><a href="#JSession_WritingMessagesToTheMessageWindow-BA19D47913_436" class=" x-xref-4-0 x-xref-4-5 x-xref-4-6 x-xref-4-9"> Writing Messages to the Message Window</a></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><a href="#JSession_WritingMessagesToAnInternalBuffer-BA19DA5613_439" class=" x-xref-4-0 x-xref-4-5 x-xref-4-6 x-xref-4-9"> Writing Messages to an Internal Buffer</a></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <div class=" x-topic-11-0 x-topic-11-1" id="JSession_WritingMessagesToTheMessageWindow-BA19D47913_436">
+                  
+                  <div class=" x-title-22-0 x-title-22-1" combinedFontName="off" id="styler-id1.1.1.10.6.6.4.1">Writing Messages to the Message Window</div>
+                  <div class=" x-abstract-1-0"><a xmlns="" class="indexterm" name="49"></a><span class=" x-indexterm-1-0"></span><a xmlns="" class="indexterm" name="50"></a><span class=" x-indexterm-1-0"></span></div>
+                  <div class=" x-body-3-0">
+                     <div class=" x-p-7-0">Methods Introduced:</div>
+                     <div class=" x-ul-2-0">
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; "></td>
+                                 <td><span class=" x-p-4-0"><a name="51"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcSession.UIDisplayMessage()</li></span></span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; "></td>
+                                 <td><span class=" x-p-4-0"><a name="52"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcSession.UIDisplayLocalizedMessage()</li></span></span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; "></td>
+                                 <td><span class=" x-p-4-0"><a name="53"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcSession.UIClearMessage()</li></span></span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                     <div class=" x-p-7-0">Use these methods to display program information..</div>
+                     <div class=" x-p-7-0">The input arguments to the methods <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.UIDisplayMessage()</span></span> and <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.UIDisplayLocalizedMessage()</span></span> include the names of the message file, a message identifier, and (optionally) a <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">stringseq</span></span> object that contains up to 10 pieces of run-time information. For <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.UIDisplayMessage()</span></span>, the strings in the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">stringseq</span></span> are identified as<span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets"> %0s</span></span>, <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">%1s</span></span>, ... <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">%9s</span></span> based on their location in the sequence. For <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.UIDisplayLocalizedMessage()</span></span>, the strings in the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">stringseq</span></span> are identified as<span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets"> %0w</span></span>, <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">%1w</span></span>, ... <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">%9w</span></span> based on their location in the sequence. To include other types of run-time data such as integers or reals, you must first
+                        convert the data to strings and store it in the string sequence.
+                     </div>
+                     <div class=" x-p-7-0">The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.UIClearMessage()</span></span> scrolls the text in the message area up one line after the method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.UIDisplayMessage()</span></span> is called.
+                     </div>
+                  </div>
+               </div>
+               <div class=" x-topic-11-0 x-topic-11-1" id="JSession_WritingMessagesToAnInternalBuffer-BA19DA5613_439">
+                  
+                  <div class=" x-title-22-0 x-title-22-1" combinedFontName="off" id="styler-id1.1.1.10.6.6.5.1">Writing Messages to an Internal Buffer</div>
+                  <div class=" x-body-3-0">
+                     <div class=" x-p-7-0">Methods Introduced:</div>
+                     <div class=" x-ul-2-0">
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; "></td>
+                                 <td><span class=" x-p-4-0"><a name="54"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcBaseSession.GetMessageContents()</li></span></span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; "></td>
+                                 <td><span class=" x-p-4-0"><a name="55"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcBaseSession.GetLocalizedMessageContents()</li></span></span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                     <div class=" x-p-7-0">You can use the methods <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcBaseSession.GetMessageContents()</span></span> and <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcBaseSession.GetLocalizedMessageContents()</span></span> to write a message to an internal buffer instead to the <span class=" x-ph-2-0" id="JSession_WritingMessagesToAnInternalBuffer-BA19DA56_PTCC_13_477"><span xmlns="" profilecode="1">Creo Parametric</span></span> message area.
+                     </div>
+                     <div class=" x-p-7-0">These methods take the same input arguments and perform exactly the same argument substitution and translation as the <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.UIDisplayMessage()</span></span> and <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.UIDisplayLocalizedMessage()</span></span> methods described in the previous section.
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class=" x-topic-11-0 x-topic-11-1" id="JSession_MessageClassification-BA1B550B_13_482">
+               
+               <a name="56"> </a><div class=" x-title-27-0 x-title-27-2" combinedFontName="off" id="styler-id1.1.1.10.6.7.1" class="Heading2">Message Classification</div>
+               <div class=" x-body-3-0">
+                  <div class=" x-p-7-0">Messages displayed in <span class=" x-ph-2-0" id="JSession_MessageClassification-BA1B550B_Creo.JS-E93153AB_13_486">Creo.JS</span> include a symbol that identifies the message type. Every message type is identified by a classification that begins with
+                     the characters <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">%C</span></span>. A message classification requires that the message key line, line one in the message file must be preceded by the classification
+                     code.
+                  </div>
+                  <div class=" x-note-2-0 x-note-2-3">
+                     <div class=" x--ufe-note-1-0 x--ufe-note-1-1" combinedFontName="off">Note</div>
+                     <div class=" x-p-7-0">Any message key string used in the code should not contain the classification.</div>
+                  </div>
+                  <div class=" x-p-7-0"><span class=" x-ph-2-0" id="JSession_MessageClassification-BA1B550B_Creo.JS-E93153AB_13_486">Creo.JS</span> applications can display any or all of the following message symbols:
+                  </div>
+                  <div class=" x-ul-2-0">
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Prompt</span></span>&#8212;This <span class=" x-ph-2-0" id="JSession_MessageClassification-BA1B550B_Creo.JS-E93153AB_13_486">Creo.JS</span> message is preceded by a green arrow. The user must respond to this message type. Responding includes, specifying input information,
+                                    accepting the default value offered, or canceling the application. If no action is taken, the progress of the application
+                                    is halted. A response may either be textual or a selection. The classification for Prompt messages is <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">%CP</span></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Info</span></span>&#8212;This <span class=" x-ph-2-0" id="JSession_MessageClassification-BA1B550B_Creo.JS-E93153AB_13_486">Creo.JS</span> message is preceded by a blue dot. Info message types contain information such as user requests or feedback from <span class=" x-ph-2-0" id="JSession_MessageClassification-BA1B550B_Creo.JS-E93153AB_13_486">Creo.JS</span> or <span class=" x-ph-2-0" id="JSession_MessageClassification-BA1B550B_PTCCreoParametri_13_503"><span xmlns="" profilecode="1">Creo Parametric</span></span>. The classification for Info messages is <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">%CI</span></span></span><div class=" x-note-2-0 x-note-2-3">
+                                    <div class=" x--ufe-note-1-0 x--ufe-note-1-1" combinedFontName="off">Note</div>
+                                    <div class=" x-p-7-0">Do not classify messages that display information regarding problems with an operation or process as <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Info</span></span>. These types of messages must be classified as <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Warnings</span></span>.
+                                    </div>
+                                 </div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Warning</span></span>&#8212;This <span class=" x-ph-2-0" id="JSession_MessageClassification-BA1B550B_Creo.JS-E93153AB_13_486">Creo.JS</span> message is preceded by a triangle containing an exclamation point. Warning message types contain information to alert users
+                                    to situations that could potentially lead to an error during a later stage of the process. Examples of warnings could be a
+                                    process restriction or a suspected data problem. A Warning does not prevent or interrupt a process. Also, a Warning should
+                                    not be used to indicate a failed operation. Warnings must only caution a user that the completed operation may not have been
+                                    performed in a completely desirable way. The classification for Warning messages is <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">%CW</span></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Error</span></span>&#8212;This <span class=" x-ph-2-0" id="JSession_MessageClassification-BA1B550B_Creo.JS-E93153AB_13_486">Creo.JS</span> message is preceded by a broken square. An Error message informs the user that a required task was not completed successfully.
+                                    Depending on the application, a failed task may or may not require intervention or correction before work can continue. Whenever
+                                    possible redress this situation by providing a path. The classification for Error messages is <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">%CE</span></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Critical</span></span>&#8212;This <span class=" x-ph-2-0" id="JSession_MessageClassification-BA1B550B_Creo.JS-E93153AB_13_486">Creo.JS</span> message is preceded by a red X. A Critical message type informs the user of an extremely serious situation that is  usually
+                                    proceeded by loss of user data. Options redressing this situation, if available, should be provided within the message. The
+                                    classification for a Critical message is <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">%CC</span></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <div class=" x-topic-11-0 x-topic-11-1" id="JSession_ReadingDataFromTheMessageWindow-BA1B580D_13_525">
+                  
+                  <div class=" x-title-22-0 x-title-22-1" combinedFontName="off" id="styler-id1.1.1.10.6.7.3.1">Reading Data from the Message Window</div>
+                  <div class=" x-body-3-0">
+                     <div class=" x-p-7-0">Methods Introduced:</div>
+                     <div class=" x-ul-2-0">
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; "></td>
+                                 <td><span class=" x-p-4-0"><a name="57"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcSession.UIReadIntMessage()</li></span></span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; "></td>
+                                 <td><span class=" x-p-4-0"><a name="58"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcSession.UIReadRealMessage()</li></span></span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; "></td>
+                                 <td><span class=" x-p-4-0"><a name="59"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcSession.UIReadStringMessage()</li></span></span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                     <div class=" x-p-7-0">These methods enable a program to get data from the user. These methods obtain keyboard input from a text box in the <span class=" x-ph-2-0" id="JSession_ReadingDataFromTheMessageWindow-BA1B580D_PTCCre_13_540"><span xmlns="" profilecode="1">Creo Parametric</span></span> user interface.
+                        <div class=" x-note-1-0 x-note-1-3">
+                           <div class=" x--ufe-note-1-0 x--ufe-note-1-1" combinedFontName="off">Note</div>
+                           <div class=" x-p-7-0">When the user presses ESC or clicks <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Cancel</span></span> in the <span class=" x-ph-2-0" id="JSession_ReadingDataFromTheMessageWindow-BA1B580D_PTCCre_13_540"><span xmlns="" profilecode="1">Creo Parametric</span></span> user interface, these methods throw the exception <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcXToolkitMsgUserQuit</span></span>.
+                           </div>
+                        </div>
+                     </div>
+                     <div class=" x-p-7-0">The <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.UIReadIntMessage()</span></span> and <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.UIReadRealMessage()</span></span> methods contain optional arguments that limit the value of the data to a certain range.
+                     </div>
+                     <div class=" x-p-7-0">The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession..UIReadStringMessage()</span></span> includes an optional Boolean argument that specifies whether to echo characters that are. Use this argument when prompting
+                        a user to enter a password.
+                     </div>
+                     <div class=" x-note-2-0 x-note-2-3">
+                        <div class=" x--ufe-note-1-0 x--ufe-note-1-1" combinedFontName="off">Note</div>
+                        <div class=" x-p-7-0">A default value is displayed in the text box as input. When a user presses ENTER as input in the user interface, the default
+                           value is not passed to the <span class=" x-ph-2-0" id="JSession_ReadingDataFromTheMessageWindow-BA1B580D_Creo.J_13_555">Creo.JS</span> method; instead, the method returns a constant string <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">use_default_string</span></span>. When this string is returned, the application must interpret that the user wants to use the default value.
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class=" x-topic-11-0 x-topic-11-1" id="JSession_DisplayingFeatureParameters-BA1B6AE6_13_557">
+               
+               <a name="60"> </a><div class=" x-title-27-0 x-title-27-2" combinedFontName="off" id="styler-id1.1.1.10.6.8.1" class="Heading2">Displaying Feature Parameters</div>
+               <div class=" x-body-3-0">
+                  <div class=" x-p-7-0">Method Introduced:</div>
+                  <div class=" x-ul-2-0">
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="61"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcSession.UIDisplayFeatureParams()</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <div class=" x-p-7-0">The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.UIDisplayFeatureParams()</span></span> forces <span class=" x-ph-2-0" id="JSession_DisplayingFeatureParameters-BA1B6AE6_PTCCreoPar_13_567"><span xmlns="" profilecode="1">Creo Parametric</span></span> to show dimensions or other parameters stored on a specific feature. The displayed dimensions may then be interactively selected
+                     by the user.
+                  </div>
+               </div>
+            </div>
+            <div class=" x-topic-11-0 x-topic-11-1" id="JSession_FileDialogs-BA1D4786_13_569">
+               
+               <a name="62"> </a><div class=" x-title-27-0 x-title-27-2" combinedFontName="off" id="styler-id1.1.1.10.6.9.1" class="Heading2">File Dialogs</div>
+               <div class=" x-body-3-0">
+                  <div class=" x-p-7-0">Methods and Properties Introduced:</div>
+                  <div class=" x-ul-2-0">
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="63"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcSession.UIOpenFile()</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="64"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcFileOpenOptions.Create()</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="65"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcFileOpenOptions.FilterString</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="66"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcFileOpenOptions.PreselectedItem</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="67"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcFileUIOptions.DefaultPath</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="68"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcFileUIOptions.DialogLabel</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="69"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcFileUIOptions.Shortcuts</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="70"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcFileOpenShortcut.Create</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="71"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcFileOpenShortcut.ShortcutName</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="72"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcFileOpenShortcut.ShortcutPath</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="73"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcSession.UISaveFile()</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="74"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcFileSaveOptions.Create()</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="75"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcSession.UISelectDirectory()</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; "></td>
+                              <td><span class=" x-p-4-0"><a name="76"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcDirectorySelectionOptions.Create()</li></span></span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <div class=" x-p-7-0">The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.UIOpenFile()</span></span> opens the relevant dialog box for browsing directories and opening files. The method lets you specify several options through
+                     the input arguments <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcFileOpenOptions</span></span> and <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcFileUIOptions</span></span>.
+                  </div>
+                  <div class=" x-p-7-0">The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.UIOpenFile()</span></span> returns the file selected by you. The application must use other properties or techniques to perform the desired action on
+                     the file.
+                  </div>
+                  <div class=" x-p-7-0">Use the method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcFileOpenOptions.Create()</span></span> to create a new instance of the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcFileOpenOptions</span></span> object. A list of options for this object with a description about what each option specifies, follows:
+                  </div>
+                  <div class=" x-ul-2-0">
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">FilterString</span></span>&#8212;Filter string for the type of file accepted by the dialog box. Multiple file types should be listed with wildcards and separated
+                                    by commas, for example, <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">*.prt</span></span>, <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">*.asm</span></span>, <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">*.txt</span></span>, <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">*.avi</span></span>, and so on. Use the property <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcFileOpenOptions.FilterString</span></span> to set this option.</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">PreselectedItem</span></span>&#8212;Specifies the name of an item to preselect in the dialog box. Use the property <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcFileOpenOptions.PreselectedItem</span></span> to set this option.</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <div class=" x-p-7-0">The <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcFileUIOptions</span></span> object contains the following options:
+                  </div>
+                  <div class=" x-ul-2-0">
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">DefaultPath</span></span>&#8212;Specifies the name of the path to be opened by default in the dialog box. Use the property <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcFileUIOptions.DefaultPath</span></span> to set this option.</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">DialogLabel</span></span>&#8212;Specifies the title of the dialog box. Use the property <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcFileUIOptions.DialogLabel</span></span> to set this option.</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Shortcuts</span></span>&#8212;Array of file shortcuts of the type <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcFileOpenShortcut</span></span>. Create this object using the property <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcFileOpenShortcut.Create</span></span>. This object contains the following attributes:</span><div class=" x-ul-2-0">
+                                    <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                       <col style="width: 0em">
+                                       <col style="width: 18pt">
+                                       <col>
+                                       <tbody>
+                                          <tr valign="baseline">
+                                             <td align="right"></td>
+                                             <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                             </td>
+                                             <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">ShortcutName</span></span>&#8212;Specifies the name of shortcut path to be made available in the dialog box.</span></td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                    <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                       <col style="width: 0em">
+                                       <col style="width: 18pt">
+                                       <col>
+                                       <tbody>
+                                          <tr valign="baseline">
+                                             <td align="right"></td>
+                                             <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                             </td>
+                                             <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">ShortcutPath</span></span>&#8212;Specifies the string for the shortcut path.</span></td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                 </div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <div class=" x-p-7-0">Use the property <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcFileOpenShortcut.ShortcutName</span></span> to set the string for the shortcut name.
+                  </div>
+                  <div class=" x-p-7-0">Use the property <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcFileOpenShortcut.ShortcutPath</span></span> to set the string for the shortcut path. 
+                  </div>
+                  <div class=" x-p-7-0">Use the property <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcFileUIOptions.Shortcuts</span></span> to set the array of file shortcuts.
+                  </div>
+                  <div class=" x-p-7-0">The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.UISaveFile()</span></span> opens the dialog box for saving a file. The method accepts options similar to <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.UIOpenFile()</span></span> through the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcFileSaveOptions</span></span> and <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcFileUIOptions</span></span> objects.  Use the method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcFileSaveOptions.Create()</span></span> to create a new instance of the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcFileSaveOptions</span></span> object. When using the <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Save</span></span> dialog box, you can set the name to a nonexistent file. The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.UISaveFile()</span></span> returns the name of the file selected by you; the application must use other methods or techniques to perform the desired
+                     action on the file.
+                  </div>
+                  <div class=" x-p-7-0">The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.UISelectDirectory()</span></span> prompts the user to select a directory using the <span class=" x-ph-2-0" id="JSession_FileDialogs-BA1D4786_PTCCreoParametric-E96269BB_13_678"><span xmlns="" profilecode="1">Creo Parametric</span></span> dialog box for browsing directories. The method accepts options through the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcDirectorySelectionOptions</span></span> object which is similar to the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcFileUIOptions</span></span> object (described for the method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.UIOpenFile()</span></span>). Specify the default directory path, the title of the dialog box, and a set of shortcuts to other directories to start browsing.
+                     If the default path is specified as <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">NULL</span></span>, the current directory is used. Use the method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcDirectorySelectionOptions.Create()</span></span> to create a new instance of the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcDirectorySelectionOptions</span></span> object. The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.UISelectDirectory()</span></span> returns the selected directory path; the application must use other methods or techniques to perform other tasks with this
+                     selected path.
+                  </div>
+               </div>
+            </div>
+            <div class=" x-topic-11-0 x-topic-11-1" id="JSession_CustomizingTheProENGINEERNavigation-BA1DD8C6_13_687">
+               
+               <a name="77"> </a><div class=" x-title-27-0 x-title-27-2" combinedFontName="off" id="styler-id1.1.1.10.6.10.1" class="Heading2">Customizing the  Navigation Area</div>
+               <div class=" x-body-3-0">
+                  <div class=" x-p-7-0">The <span class=" x-ph-2-0" id="JSession_CustomizingTheProENGINEERNavigation-BA1DD8C6_PT_13_692"><span xmlns="" profilecode="1">Creo Parametric</span></span> navigation area includes the Model and Layer Tree pane, Folder browser pane, and Favorites pane. The methods described in
+                     this section enable <span class=" x-ph-2-0" id="JSession_CustomizingTheProENGINEERNavigation-BA1DD8C6_Cr_13_694">Creo.JS</span> applications to add custom panes that contain Web pages to the <span class=" x-ph-2-0" id="JSession_CustomizingTheProENGINEERNavigation-BA1DD8C6_PT_13_692"><span xmlns="" profilecode="1">Creo Parametric</span></span> navigation area.
+                  </div>
+               </div>
+               <div class=" x-topic-11-0 x-topic-11-1" id="JSession_AddingCustomWebPages-BA1D8589_13_697">
+                  
+                  <div class=" x-title-22-0 x-title-22-1" combinedFontName="off" id="styler-id1.1.1.10.6.10.3.1">Adding Custom Web Pages</div>
+                  <div class=" x-body-3-0">
+                     <div class=" x-p-7-0">To add custom Web pages to the navigation area, the <span class=" x-ph-2-0" id="JSession_AddingCustomWebPages-BA1D8589_Creo.JS-E93153AB_13_701">Creo.JS</span> application must:
+                     </div>
+                     <div class=" x-ol-6-0">
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-11-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0.00em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">1.</td>
+                                 <td><span class=" x-p-4-0">Add a new pane to the navigation area.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-15-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0.00em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">2.</td>
+                                 <td><span class=" x-p-4-0">Set an icon for this pane.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-12-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0.00em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">3.</td>
+                                 <td><span class=" x-p-4-0">Set the URL of the location that will be displayed in the pane.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                     <div class=" x-p-7-0">Methods Introduced:</div>
+                     <div class=" x-ul-2-0">
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; "></td>
+                                 <td><span class=" x-p-4-0"><a name="78"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcSession.NavigatorPaneBrowserAdd()</li></span></span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; "></td>
+                                 <td><span class=" x-p-4-0"><a name="79"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcSession.NavigatorPaneBrowserIconSet()</li></span></span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; "></td>
+                                 <td><span class=" x-p-4-0"><a name="80"> </a><span class=" x-apiname-3-0" mcad="FunctionList"><li class="FunctionList">pfcSession.NavigatorPaneBrowserURLSet()</li></span></span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                     <div class=" x-p-7-0">The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.NavigatorPaneBrowserAdd()</span></span> adds a new pane that can display a Web page to the navigation area. The input parameters follow:
+                     </div>
+                     <div class=" x-ul-2-0">
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"> <span class=" x-parmname-3-0">PaneName</span>&#8212;Unique name for the pane. Use this name in subsequent calls to <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.NavigatorPaneBrowserIconSet()</span></span> and <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.NavigatorPaneBrowserURLSet()</span></span>.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-parmname-3-0">IconFileName</span>&#8212;Name of the icon file, including the extension. A valid format for the icon file is the PTC-proprietary format used by <span class=" x-ph-2-0" id="JSession_AddingCustomWebPages-BA1D8589_PTCCreoParametric_13_731"><span xmlns="" profilecode="1">Creo Parametric</span></span> <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">.BIF</span></span>, <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">.GIF</span></span>, <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">.JPG</span></span>, or <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">.PNG</span></span>. The new pane is displayed with the icon image. If you specify the value as <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">NULL</span></span>, the default <span class=" x-ph-2-0" id="JSession_AddingCustomWebPages-BA1D8589_PTCCreoParametric_13_731"><span xmlns="" profilecode="1">Creo Parametric</span></span> icon is used.</span><div class=" x-p-5-0">The default search paths for finding the icons are:</div>
+                                    <div class=" x-ul-2-0">
+                                       <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                          <col style="width: 0em">
+                                          <col style="width: 18pt">
+                                          <col>
+                                          <tbody>
+                                             <tr valign="baseline">
+                                                <td align="right"></td>
+                                                <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                </td>
+                                                <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;creo_loadpoint&gt;\&lt;version&gt;\Common Files\text\resource</span></span></span></td>
+                                             </tr>
+                                          </tbody>
+                                       </table>
+                                       <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                          <col style="width: 0em">
+                                          <col style="width: 18pt">
+                                          <col>
+                                          <tbody>
+                                             <tr valign="baseline">
+                                                <td align="right"></td>
+                                                <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                </td>
+                                                <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;Application text dir&gt;\resource</span></span></span></td>
+                                             </tr>
+                                          </tbody>
+                                       </table>
+                                       <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                          <col style="width: 0em">
+                                          <col style="width: 18pt">
+                                          <col>
+                                          <tbody>
+                                             <tr valign="baseline">
+                                                <td align="right"></td>
+                                                <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                </td>
+                                                <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;Application text dir&gt;\&lt;language&gt;\resource</span></span></span></td>
+                                             </tr>
+                                          </tbody>
+                                       </table>
+                                    </div>
+                                    <div class=" x-p-5-0">The location of the application text directory is specified in the registry file.</div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-parmname-3-0">URL</span>&#8212;URL of the location to be accessed from the pane.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                     <div class=" x-p-7-0">Use the method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.NavigatorPaneBrowserIconSet()</span></span> to set or change the icon of a specified browser pane in the navigation area.
+                     </div>
+                     <div class=" x-p-7-0">Use the method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcSession.NavigatorPaneBrowserURLSet()</span></span> to change the URL of the page that appears in the browser pane in the navigation area.
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

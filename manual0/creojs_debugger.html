@@ -1,0 +1,356 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-9">
+      <meta name="ch:resourceid" content="creojs_debugger" scheme="atiChunkerMeta">
+      
+      
+      
+      
+      
+      
+      <link href="css/styler.css" rel="stylesheet" type="text/css">
+      <title>Creo.JS Debugger</title>
+   
+<SCRIPT LANGUAGE="JAVASCRIPT">
+  function findProperNode() { top.frames[0].document.apiwizard.manual("MANCREOJS_DEBUGGER0", location.hash); }
+</SCRIPT>
+
+</head>
+   <body onLoad="findProperNode()">
+      
+         
+         <a name="0"> </a><div class=" x-title-65-0 x-title-65-1" combinedFontName="off" id="styler-id1.1.1.9.1" class="ChapterTitle">Creo.JS Debugger</div>
+         <div class=" x-shortdesc-1-0"></div><span class=" x-prolog-1-0">
+            <div class=" x-metadata-1-0"><span class=" x-keywords-2-0"><span class=" x-keyword-1-0">
+                     </span><a xmlns="" class="indexterm" name="1"></a><span class=" x-indexterm-1-0"></span><a xmlns="" class="indexterm" name="2"></a><span class=" x-indexterm-1-0"></span><a xmlns="" class="indexterm" name="3"></a><span class=" x-indexterm-1-0"></span><a xmlns="" class="indexterm" name="4"></a><span class=" x-indexterm-1-0"></span></span></div></span><div class=" x-body-2-0">
+            <div class=" x-p-7-0">JavaScript code might contain syntax or logical errors that can be difficult to diagnose. These errors do not have indications
+               and need to be debugged in a runtime environment. In <span class=" x-ph-2-0" id="creojs_debugger_pubsTopic-1-4578B678_PTCCreoParametric-E_12_20"><span xmlns="" profilecode="1">Creo Parametric</span></span> <span class=" x-ph-2-0">7.0.2.0</span> and later you can debug <span class=" x-ph-2-0" id="creojs_debugger_pubsTopic-1-4578B678_Creo.JS-E93153AB_12_23">Creo.JS</span> code by using Chrome DevTools(CDT). The <span class=" x-ph-2-0" id="creojs_debugger_pubsTopic-1-4578B678_Creo.JS-E93153AB_12_23">Creo.JS</span> toolkit uses a Chrome V8 JavaScript engine that runs within the <span class=" x-ph-2-0" id="creojs_debugger_pubsTopic-1-4578B678_PTCCreo-EC6F7D2F_12_25">Creo</span> process and supports the standard CDT protocol. This process enables you to use the remote debugger through DevTools provided
+               by the Chrome Web browser.
+            </div>
+         </div>
+         <div class=" x-topic-4-0 x-topic-4-1 x-topic-4-2" combinedFontName="off" id="styler-id1.1.1.9.5">
+            
+            <a name="5"> </a><div class=" x-title-33-0 x-title-33-2" combinedFontName="off" id="styler-id1.1.1.9.5.1" class="Heading1">To Debug Using Chrome Remote Debugger</div>
+            <div class=" x-body-3-0">
+               <div class=" x-p-7-0">CDT debugger establishes a connection with <span class=" x-ph-2-0" id="creojs_debugger_pubsTopic-1-4578B678_Creo.JS-E93153AB_12_23">Creo.JS</span> instance in the V8 inspector protocol through a Web socket within the internal <span class=" x-ph-2-0" id="creojs_debugger_pubsTopic-1-4578B678_Creo.JS-E93153AB_12_23">Creo.JS</span> Web server. To make a debugger connection, the internal <span class=" x-ph-2-0" id="creojs_debugger_pubsTopic-1-4578B678_Creo.JS-E93153AB_12_23">Creo.JS</span> Web server must be started. To start the internal Web server, perform the following steps:
+               </div>
+               <div class=" x-ol-6-0">
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-11-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0.00em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; ">1.</td>
+                           <td><span class=" x-p-4-0">Manually configure <span class=" x-ph-2-0" id="creojs_debugger_pubsTopic-1-4578B678_PTCCreo-EC6F7D2F_12_25">Creo</span> to specify the desired Web server port by editing the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">creo_js_app.conf</span></span> file located in your working directory.</span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-15-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0.00em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; ">2.</td>
+                           <td><span class=" x-p-4-0">You can use a special Web page <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">start_creojs_debugger.html</span></span> to check the status of the <span class=" x-ph-2-0" id="creojs_debugger_pubsTopic-1-4578B678_Creo.JS-E93153AB_12_23">Creo.JS</span> Web server.
+                                 <div class=" x-note-1-0 x-note-1-3">
+                                    <div class=" x--ufe-note-1-0 x--ufe-note-1-1" combinedFontName="off">Note</div>
+                                    <div class=" x-p-7-0">The <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">start_creojs_debugger.html</span></span> file is used to invoke the special Web page and is included in the <span class=" x-ph-2-0" id="creojs_debugger_pubsTopic-1-4578B678_PTCCreo-EC6F7D2F_12_25">Creo</span> installation at <span class=" x-filepath-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;creojs_loadpoint&gt;\creojs\creojsweb</span></span> location.
+                                    </div>
+                                 </div></span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-15-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0.00em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; ">3.</td>
+                           <td><span class=" x-p-4-0">To start the Web server, open the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">start_creojs_debugger.html</span></span> file in the embedded browser by specifying the full path of the file. After the page opens, you get a link for connecting
+                                 to the <span class=" x-ph-2-0" id="creojs_debugger_pubsTopic-1-4578B678_Creo.JS-E93153AB_12_23">Creo.JS</span> via Chrome remote debugger. For example, if the <span class=" x-ph-2-0" id="creojs_debugger_pubsTopic-1-4578B678_Creo.JS-E93153AB_12_23">Creo.JS</span> Web server starts on port 8080, you will get the following message:<pre class=" x-codeblock-1-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Creo.JS debugger
+Creo.JS web server is started on port 8080.
+To debug your CreoJS code please do the following: 
+1. Open Chrome browser
+2. Open the link in a browser window
+
+devtools://devtools/bundled/inspector.html?v8only=true&amp;ws=127.0.0.1:8080/debug
+
+3. In the Creo embedded browser open a page you want to debug
+4. In the Console bottom panel select a context
+ (usually title of the page to debug) you plan on debugging</span></pre></span><div class=" x-p-5-0">You can also start the Web server using the <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">startWebServer{port_number}</span></span> function which can be invoked using the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">script_engine_testing.html</span></span> web tool.
+                              </div>
+                              <div class=" x-note-2-0 x-note-2-3">
+                                 <div class=" x--ufe-note-1-0 x--ufe-note-1-1" combinedFontName="off">Note</div>
+                                 <div class=" x-p-7-0">If you want to start the <span class=" x-ph-2-0" id="creojs_debugger_pubsTopic-1-4578B678_Creo.JS-E93153AB_12_23">Creo.JS</span> Web server manually, the port number in the above link should be replaced with the configured port number from the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">creo_js_app.conf</span></span> file located in your working directory.
+                                 </div>
+                              </div>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-15-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0.00em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; ">4.</td>
+                           <td><span class=" x-p-4-0">After the remote debugger opens, you can perform various operations using the toolset provided in the debugger, such as browsing
+                                 the source of <span class=" x-ph-2-0" id="creojs_debugger_pubsTopic-1-4578B678_Creo.JS-E93153AB_12_23">Creo.JS</span> scripts, setting break points in debugging scripts, viewing local variables of the current context, evaluating expressions
+                                 within the current context, and switching between different <span class=" x-ph-2-0" id="creojs_debugger_pubsTopic-1-4578B678_Creo.JS-E93153AB_12_23">Creo.JS</span> contexts. For more details about the various operations that can be performed in the debugger, refer to the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">start_creojs_debugger.html</span></span> page.</span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-15-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0.00em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; ">5.</td>
+                           <td><span class=" x-p-4-0">If you are using Chrome DevTools for the first time, you will see a window similar to the following image:
+                                 <div class=" x-fig-1-0 x-fig-1-2" id="styler-id1.1.1.9.5.2.2.5.1.1">
+                                    <div class=" x-image-1-0 x-image-1-1"><img alt="Image" src="graphics/dbg1.png"></div>
+                                 </div></span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-15-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0.00em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; ">6.</td>
+                           <td><span class=" x-p-4-0">You can switch to the <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Sources</span></span> tab if you want to access the <span class=" x-ph-2-0" id="creojs_debugger_pubsTopic-1-4578B678_Creo.JS-E93153AB_12_23">Creo.JS</span> scripts and perform other operations such as call stack view, local and global variables, and break points.
+                                 <div class=" x-fig-1-0 x-fig-1-2" id="styler-id1.1.1.9.5.2.2.6.1.3">
+                                    <div class=" x-image-1-0 x-image-1-1"><img alt="Image" src="graphics/dbg2.png"></div>
+                                 </div></span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-15-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0.00em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; ">7.</td>
+                           <td><span class=" x-p-4-0">Although you can see a separate <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Console</span></span> tab, it is recommended that you use the <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Console</span></span> tab next to the <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Sources</span></span> tab.
+                                 <div class=" x-fig-1-0 x-fig-1-2" id="styler-id1.1.1.9.5.2.2.7.1.4">
+                                    <div class=" x-image-1-0 x-image-1-1"><img alt="Image" src="graphics/dbg3.png"></div>
+                                 </div></span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-12-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0.00em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; ">8.</td>
+                           <td><span class=" x-p-4-0">In the <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Console</span></span> tab, you can see the context that you have currently selected and the text area where the console commands can be executed.
+                                 You can see the behavior of the functions present in the present context.
+                                 <div class=" x-fig-1-0 x-fig-1-2" id="styler-id1.1.1.9.5.2.2.8.1.2">
+                                    <div class=" x-image-1-0 x-image-1-1"><img alt="Image" src="graphics/dbg4.png"></div>
+                                 </div></span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+         <div class=" x-topic-8-0 x-topic-8-1 x-topic-8-2" id="styler-id1.1.1.9.6">
+            
+            <a name="6"> </a><div class=" x-title-33-0 x-title-33-2" combinedFontName="off" id="styler-id1.1.1.9.6.1" class="Heading1">Example 1: Debugging Creo.JS script</div>
+            <div class=" x-body-3-0">
+               <div class=" x-p-7-0">If you have already started the <span class=" x-ph-2-0" id="creojs_debugger_pubsTopic-1-4578B678_Creo.JS-E93153AB_12_23">Creo.JS</span> Web server and opened the Chrome remote debugger using the link provided on the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">start_creojs_debugger.html</span></span> page, you can refer to the below example to see how debugging works. The following example is an illustration of the operations
+                  that you can perform in the debugger.
+               </div>
+               <div class=" x-ol-6-0">
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-11-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0.00em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; ">1.</td>
+                           <td><span class=" x-p-4-0">Open the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">script_engine_testing.html</span></span> web tool in the embedded browser by specifying the full path of the file as <span class=" x-filepath-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;creojs_loadpoint&gt;\creojs\creojsweb</span></span> directory.
+                                 <div class=" x-fig-1-0 x-fig-1-2" id="styler-id1.1.1.9.6.2.2.1.1.3">
+                                    <div class=" x-image-1-0 x-image-1-1"><img alt="" src="graphics/creo1.png"></div>
+                                 </div></span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-15-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0.00em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; ">2.</td>
+                           <td><span class=" x-p-4-0">Type the script:<pre class=" x-codeblock-1-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">function toTestStepIn(msg) {
+   		 print (`toTestStepIn (${msg})`);
+}
+function toTestStepOver (msg) {
+   		 print (`toTestStepOver (${msg})`);
+   		 toTestStepIn (`wrapping message [${msg}]`);
+   		 print ("Exiting from toTestStepOver()");
+}
+print ("Functions toTestStepOver() and toTestStepIn() are defined");</span></pre></span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-15-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0.00em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; ">3.</td>
+                           <td><span class=" x-p-4-0">Click <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Save As</span></span> in the embedded browser to save the script as <span class=" x-filepath-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">dbg_test.js</span></span> file.</span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-15-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0.00em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; ">4.</td>
+                           <td><span class=" x-p-4-0">Click <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Run</span></span> to execute the script. The remote debugger page opens in your default browser.</span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-15-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0.00em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; ">5.</td>
+                           <td><span class=" x-p-4-0">In the remote debugger, click <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Page</span></span> on the <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Sources</span></span> tab. Navigate to the <span class=" x-filepath-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">dbg_test.js</span></span> file to open the file in the center panel.</span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-15-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0.00em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; ">6.</td>
+                           <td><span class=" x-p-4-0">Ensure that you open <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Creo JS.Link Shell</span></span> as the context in the context list of the <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Console</span></span> tab as shown in the image:
+                                 <div class=" x-fig-1-0 x-fig-1-2" id="styler-id1.1.1.9.6.2.2.6.1.3">
+                                    <div class=" x-image-1-0 x-image-1-1"><img alt="Image" src="graphics/dbg6.png"></div>
+                                 </div></span> 
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-15-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0.00em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; ">7.</td>
+                           <td><span class=" x-p-4-0">Set up the break point at line 2 of the script by clicking on the left side of the line number as shown in the image:
+                                 <div class=" x-fig-1-0 x-fig-1-2" id="styler-id1.1.1.9.6.2.2.7.1.1">
+                                    <div class=" x-image-1-0 x-image-1-1"><img alt="Image" src="graphics/dbg7.png"></div>
+                                 </div></span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-15-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0.00em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; ">8.</td>
+                           <td><span class=" x-p-4-0">To manually execute the function, type <span class=" x-userinput-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">toTestStepOver</span></span> (<span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">'my test message'</span></span>) in the <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Console</span></span> tab and press ENTER.</span><div class=" x-p-5-0">Note the following important points:
+                                 <div class=" x-ul-1-0">
+                                    <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                                       <col style="width: 0em">
+                                       <col style="width: 18pt">
+                                       <col>
+                                       <tbody>
+                                          <tr valign="baseline">
+                                             <td align="right"></td>
+                                             <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                             <td><span class=" x-p-4-0">Script execution stops at line 2 where the break point is set.</span></td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                    <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                                       <col style="width: 0em">
+                                       <col style="width: 18pt">
+                                       <col>
+                                       <tbody>
+                                          <tr valign="baseline">
+                                             <td align="right"></td>
+                                             <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                             <td><span class=" x-p-4-0">In the right side of the panel, <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Call Stack</span></span> option displays the current function is <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">toTestStepIn</span></span> and the earlier one is <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">toTestStepOver</span></span>.</span></td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                    <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                                       <col style="width: 0em">
+                                       <col style="width: 18pt">
+                                       <col>
+                                       <tbody>
+                                          <tr valign="baseline">
+                                             <td align="right"></td>
+                                             <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                             <td><span class=" x-p-4-0">You can see the local and global variables in the <span class=" x-uicontrol-4-0" combinedFontName="Sanserif-combined"><span xmlns="" class="cf-Sanserif-combined-Default">Scope</span></span> option.</span></td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                 </div>
+                              </div>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <table border="0" cellpadding="0" cellspacing="0" class=" x-li-12-0" style="table-layout: fixed; " width="100%">
+                     <col style="width: 0.00em">
+                     <col style="width: 18pt">
+                     <col>
+                     <tbody>
+                        <tr valign="baseline">
+                           <td align="right"></td>
+                           <td align="left" style="word-break: keep-all; ">9.</td>
+                           <td><span class=" x-p-4-0">Click <span class=" x-image-2-0"><img alt="Image" src="graphics/continueBtn.gif"></span> on the right side of the panel to continue with the script execution.</span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

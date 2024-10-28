@@ -1,0 +1,363 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-9">
+      <meta name="ch:resourceid" content="creojs_working_details" scheme="atiChunkerMeta">
+      
+      
+      
+      
+      
+      
+      <link href="css/styler.css" rel="stylesheet" type="text/css">
+      <title>Working with Creo.JS</title>
+   
+<SCRIPT LANGUAGE="JAVASCRIPT">
+  function findProperNode() { top.frames[0].document.apiwizard.manual("MANCREOJS_WORKING_DETAILS0", location.hash); }
+</SCRIPT>
+
+</head>
+   <body onLoad="findProperNode()">
+      
+         
+         <a name="0"> </a><div class=" x-title-65-0 x-title-65-1" combinedFontName="off" id="styler-id1.1.1.4.1" class="ChapterTitle">Working with Creo.JS</div>
+         <div class=" x-shortdesc-1-0"></div><span class=" x-prolog-1-0">
+            <div class=" x-metadata-1-0"><span class=" x-keywords-2-0"><a xmlns="" class="indexterm" name="1"></a><span class=" x-indexterm-1-0"></span></span></div></span><div class=" x-body-2-0">
+            <div class=" x-p-7-0">This section explains how to work with <span class=" x-ph-2-0" id="creojs_working_details_pubsTopic-1-4578B678_Creo.JS-E931_7_10">Creo.JS</span>.
+            </div>
+         </div>
+         <div class=" x-topic-4-0 x-topic-4-1 x-topic-4-2" combinedFontName="off" id="creojs_working_details_InitializeCreo.JSFramework-EF0701_7_11">
+            
+            <a name="2"> </a><div class=" x-title-33-0 x-title-33-2" combinedFontName="off" id="styler-id1.1.1.4.5.1" class="Heading1">Initialize Creo.JS Framework</div><span class=" x-prolog-1-0">
+               <div class=" x-metadata-1-0"><span class=" x-keywords-2-0"><a xmlns="" class="indexterm" name="3"></a><span class=" x-indexterm-1-0"></span></span></div></span><div class=" x-body-3-0">
+               <div class=" x-p-7-0">Include the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">creojs.js</span></span> script in every web page of the application to work with <span class=" x-ph-2-0" id="creojs_working_details_InitializeCreo.JSFramework-EF0701_7_21">Creo.JS</span>. The script enables interaction between the web browser environment and <span class=" x-ph-2-0" id="creojs_working_details_InitializeCreo.JSFramework-EF0701_7_21">Creo.JS</span> engine. The web page uses the JavaScript object <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">CreoJS</span></span>, which is initialized by this script, to call the <span class=" x-ph-2-0" id="creojs_working_details_InitializeCreo.JSFramework-EF0701_7_21">Creo.JS</span> toolkit.
+               </div>
+               <div class=" x-p-7-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">creojs.js</span></span> and other scripts that are available with <span class=" x-ph-2-0" id="creojs_working_details_InitializeCreo.JSFramework-EF0701_7_21">Creo.JS</span> are available in <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">creojsweb</span></span> at <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;creojs_loadpoint&gt;</span></span>. To use these scripts in the <span class=" x-ph-2-0" id="creojs_working_details_InitializeCreo.JSFramework-EF0701_7_21">Creo.JS</span> web applications, they should be located in the same folder as the application web content. These scripts are served when
+                  the application accesses them. You can copy, modify, and distribute these scripts along with your applications.
+               </div>
+               <div class=" x-p-7-0">To initialize <span class=" x-ph-2-0" id="creojs_working_details_InitializeCreo.JSFramework-EF0701_7_21">Creo.JS</span>, include the following code in the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;head&gt;</span></span> element of the web application:
+               </div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script src="creojs.js"&gt;&lt;/script&gt;</span></pre><div class=" x-p-7-0">If you want the <span class=" x-ph-2-0" id="creojs_working_details_InitializeCreo.JSFramework-EF0701_7_21">Creo.JS</span> script to call the web browser page, include the following code in the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;head&gt;</span></span> element of the web application:
+               </div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script type="text/creojs" src="browser.creojs"&gt;&lt;/script&gt;</span></pre><div class=" x-p-7-0">Special characters received by the browser are stored in the following two ways: 
+                  <div class=" x-ul-1-0">
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0">Using the extended ASCII table for the selected national alphabet where each special character has its own code from the range
+                                    128 to 255.</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0">Using the Uniform Transformation Format(UTF).</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <div class=" x-note-2-0 x-note-2-3">
+                  <div class=" x--ufe-note-1-0 x--ufe-note-1-1" combinedFontName="off">Note</div>
+                  <div class=" x-p-7-0">PTC recommends that you use text that contains English characters, digits, all characters from the first half of ASCII table,
+                     and any UTF encoded text. Text containing special characters from national alphabets which is not encoded in UTF is not supported
+                     in <span class=" x-ph-2-0" id="creojs_working_details_InitializeCreo.JSFramework-EF0701_7_47">Creo</span>.
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class=" x-topic-8-0 x-topic-8-1 x-topic-8-2" id="creojs_working_details_Creo.JSScripts-EF070751_7_48">
+            
+            <a name="4"> </a><div class=" x-title-33-0 x-title-33-2" combinedFontName="off" id="styler-id1.1.1.4.6.1" class="Heading1">Creo.JS Scripts</div><span class=" x-prolog-1-0">
+               <div class=" x-metadata-1-0"><span class=" x-keywords-2-0"><a xmlns="" class="indexterm" name="5"></a><span class=" x-indexterm-1-0"></span><a xmlns="" class="indexterm" name="6"></a><span class=" x-indexterm-1-0"></span><a xmlns="" class="indexterm" name="7"></a><span class=" x-indexterm-1-0"></span></span></div></span><div class=" x-body-3-0">
+               <div class=" x-p-7-0">The JavaScript code executed by <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> must be included in the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script&gt;</span></span> tag, which has the type set as <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">text/creojs</span></span>. The <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">src</span></span> attribute is supported for scripts included in the web page. The scripts must be located relative to the HTML page location.
+               </div>
+               <div class=" x-p-7-0">Absolute scripts references, for example, <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">src=http://some-server/foobar.creojs</span></span> are not supported.
+               </div>
+               <div class=" x-p-7-0">After a web page loads, <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> framework scans the DOM of the web page. It loads all the <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> scripts in the connected <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_PTCCreo-E_7_70">Creo</span> session. The scripts are executed by <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> engine.
+               </div>
+               <div class=" x-p-7-0"><span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> scripts are loaded in <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_PTCCreo-E_7_70">Creo</span> and executed in the order of their appearance on the web page. The <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> scripts are loaded and executed asynchronously when the web page loads.
+               </div>
+               <div class=" x-p-7-0">When the web page fully loads, <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> scripts may not have been fully loaded, even though all page elements <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">onload</span></span> event listeners are executed. If you want the web page to wait for <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> initialization and termination events, set the event listeners <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">CreoJS.$ADD_ON_LOAD</span></span> and <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">CreoJS.$ADD_ON_UNLOAD</span></span> respectively.
+               </div>
+               <div class=" x-p-7-0">The <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">CreoJS.$ADD_ON_LOAD</span></span> adds an event handler that executes the initialization script only after all the <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> scripts are loaded. To ensure that the initialization code which interacts with <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> code is executed after all page scripts are initialized, set <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">onload</span></span> event handler inside the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">onload</span></span> event handler of the page in the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;body&gt;</span></span> tag. See the following sample code:<pre class=" x-codeblock-1-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;html&gt;
+    &lt;head&gt;
+        &lt;script src="creojs.js"&gt;&lt;/script&gt;
+        &lt;script type="text/creojs" src="browser.creojs"&gt;&lt;/script&gt;
+        &lt;script type="text/creojs"&gt;
+            function getActiveModelName () {
+                return pfcGetCurrentSession ().GetActiveModel ().FileName;
+            }
+        &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body onload="CreoJS.$ADD_ON_LOAD (initialize)"&gt;
+        &lt;b&gt;Active model:&lt;/b&gt; &lt;span id="MODELNAME"&gt;&lt;/span&gt;
+        &lt;script&gt;
+            function initialize () {
+                CreoJS.getActiveModelName ()
+                    .then (function (name) {
+                        MODELNAME.innerHTML = name;
+                    })
+            }
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</span></pre></div>
+               <div class=" x-p-7-0">Use the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">CreoJS.$ADD_ON_UNLOAD</span></span> event handler to execute the deinitialization code when the browser unloads the page. These handlers execute the script before
+                  <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> destroys context associated with the page being unloaded. You can also release the <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_PTCCreo-E_7_70">Creo</span> resources allocated by the page.
+               </div>
+               <div class=" x-p-7-0">Each web page has its own isolated context inside the <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> engine. The context is created when the web page is loading and destroyed when the web page is unloading. The pages can communicate
+                  with each other using the <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> session storage, which maintains a global context of <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> engine. This is similar to the browser property <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Window.sessionStorage</span></span>.
+               </div>
+               <div class=" x-section-1-0" id="styler-id1.1.1.4.6.3.9">
+                  <div class=" x-title-58-0" combinedFontName="off" id="styler-id1.1.1.4.6.3.9.1">Embedded Scripts</div>
+                  <div class=" x-p-7-0">It is recommended to use the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">id</span></span> attribute for embedded <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> scripts. The <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">id</span></span> are returned in errors which further helps to identify location of the problem.
+                  </div>
+                  <div class=" x-p-7-0">The following example shows an embedded script.</div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script type="text/creojs" id=</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">example1.creojs</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&gt;
+    function getActiveModelName () {
+        let session = pfcGetCurrentSession ();
+        let model = session.GetActiveModel ();
+        return model ? model.FileName : null
+    }
+&lt;/script&gt;
+</span></pre></div>
+               <div class=" x-section-1-0" id="styler-id1.1.1.4.6.3.10">
+                  <div class=" x-title-58-0" combinedFontName="off" id="styler-id1.1.1.4.6.3.10.1">External Scripts</div>
+                  <div class=" x-p-7-0">When you use external <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> scripts it is recommended to use <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">.creojs</span></span> extension. Do not use <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">.js</span></span> extensions for external scripts. The <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">.js</span></span> scripts may not load properly in the web page due to the file type association of the system.
+                  </div>
+                  <div class=" x-p-7-0">If scripts do not load in <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_PTCCreo-E_7_70">Creo</span> with <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">.creojs</span></span> extension , check your system for <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">.creojs</span></span> file type association. If there is a default program assigned to handle <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">.creojs</span></span> files, remove it to resolve this problem.
+                  </div>
+                  <div class=" x-p-7-0">This following example shows an external script.</div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script type=</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">text/creojs</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221; </span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">src=</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">test/example3.creojs</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&gt;&lt;/script&gt;
+</span></pre></div>
+            </div>
+         </div>
+         <div class=" x-topic-8-0 x-topic-8-1 x-topic-8-2" id="styler-id1.1.1.4.7">
+            
+            <a name="8"> </a><div class=" x-title-33-0 x-title-33-2" combinedFontName="off" id="styler-id1.1.1.4.7.1" class="Heading1">Calling Creo.JS Code from Browser Code</div><span class=" x-prolog-1-0">
+               <div class=" x-metadata-1-0"><span class=" x-keywords-2-0"><a xmlns="" class="indexterm" name="9"></a><span class=" x-indexterm-1-0"></span></span></div></span><div class=" x-body-3-0">
+               <div class=" x-p-7-0">Browser code can call any globally declared <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> function using the syntax <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">CreoJS.functionName(parameters)</span></span>. Such calls are executed asynchronously and return a Promise object, which is used to access the result when it is ready
+                  . The input arguments are serialized as JSON, which are sent to <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> environment along with the function name. When <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> environment is ready to run the call, it is asynchronously executed by the engine and a JSON serialized result is sent back
+                  to the browser page. To process the result, the browser code subscribes to it by providing a processing callback function
+                  to the method <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">then()</span></span>. The callback function is available in the Promise object returned by <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> function call.
+               </div>
+               <div class=" x-p-7-0">In the example below, the browser code calls <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getModelType</span></span> function, which is declared in <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script type=</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">text/creojs</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&gt;</span></span> section. A callback function is registered to consume the result and use the result value to render the HTML text in the
+                  current document.
+               </div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script type="text/creojs" id=</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">curmodelname.creojs</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&gt;
+    let session = pfcGetCurrentSession ()
+    function getModelType (filename) {
+        try {
+            let model = session.GetModelFromFileName (filename)
+            return model ? model.Type.string () : null
+        }
+        catch (ex) {
+            return null
+        }
+    }
+&lt;/script&gt;
+
+&lt;script&gt;
+    var filename = document.getElementById ('filenameinput').value
+    CreoJS.getModelType (filename).then (function (modelType) {
+        var type = modelType || 'not found'
+        var text = filename + ' has type "' + type + '"'
+        document.appendChild (document.createTextNode (text))
+    })
+&lt;/script&gt;
+</span></pre><div class=" x-p-7-0">JavaScript which runs in the browser uses the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">CreoJS.functionName (parameters)</span></span> syntax to call a function, which is declared in the <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span>. This call returns a Promise. A Promise represents a return value, which is available when the calling function exits. The
+                  return value is delivered asynchronously from <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> to the browser environment. To consume the return value, the code that calls it must have a callback function. When <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> sends the result to the browser environment, the callback function is called with the return value. Use <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Promise.then (valueConsumingCallback)</span></span> syntax to register the callback.
+               </div>
+            </div>
+         </div>
+         <div class=" x-topic-8-0 x-topic-8-1 x-topic-8-2" id="styler-id1.1.1.4.8">
+            
+            <a name="10"> </a><div class=" x-title-33-0 x-title-33-2" combinedFontName="off" id="styler-id1.1.1.4.8.1" class="Heading1">Creo.JS Exception Handling</div><span class=" x-prolog-1-0">
+               <div class=" x-metadata-1-0"><span class=" x-keywords-2-0"><a xmlns="" class="indexterm" name="11"></a><span class=" x-indexterm-1-0"></span></span></div></span><div class=" x-body-3-0">
+               <div class=" x-p-7-0">You can handle <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> exceptions in its code. This ensures that exceptions are not thrown between the browser and <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_PTCCreo-E_7_70">Creo</span> environment. If the exceptions are not caught on the <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_PTCCreo-E_7_70">Creo</span> side, they can be processed by the browser callbacks. There are two types of interceptors for exception handling:
+                  <div class=" x-ul-1-0">
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0">Errors are handled by <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">onError()</span></span> interceptor. <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">onError()</span></span> is used to process JavaScript error objects or exceptions derived from JavaScript error objects.</span><div class=" x-p-5-0">Such exceptions contain traceback information and can be used for more detailed problem reporting.</div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0">Application exceptions are handled by <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">onException()</span></span> interceptor. <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">onException()</span></span> is used to process all other thrown objects.</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <div class=" x-p-7-0">You can also use <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">catch()</span></span> to setup a callback that handles any type of throw objects.
+               </div>
+               <div class=" x-p-7-0">The following example shows how to handle exceptions.</div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script type="text/creojs" id=</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">exceptions.creojs</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&gt;
+    function testException (isError) {
+        if (isError) {
+            throw new Error ('this is error')
+        }
+        else {
+            throw {test: 'this is application exception'}
+        }
+    }
+&lt;/script&gt;
+
+&lt;script&gt;
+    var isError = document.getElementById ('iserrorcheckbox').checked
+    CreoJS.testException (isError)
+        .onError (function (err) {
+                // catches new Error ('this is error') 
+            })
+        .onException (function (ex) {
+                // catches {test: 'this is application exception'}
+            })
+&lt;/script&gt;
+</span></pre><div class=" x-p-7-0">Use Promise to call <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">finally()</span></span>. The function is called after the execution of the <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> function either after <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">then()</span></span> or <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">catch()</span></span> callback.
+               </div>
+               <div class=" x-p-7-0">Chaining Promises are used to simplify the sequences of asynchronous calls.</div>
+               <div class=" x-note-2-0 x-note-2-3">
+                  <div class=" x--ufe-note-1-0 x--ufe-note-1-1" combinedFontName="off">Note</div>
+                  <div class=" x-p-7-0">The <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_PTCCreo-E_7_70">Creo</span> embedded browser supports Internet Explorer, which does not have embedded support for Promises. Due to this limitation of
+                     Internet Explorer, a small subset of the Promise features, <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">then</span></span>, <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">catch()</span></span>, and <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">finally()</span></span>, are supported. There is no support for <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">async</span></span> and <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">await</span></span>, which are keywords of ECMAScript specification. However, full Promise interface is supported in <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span>.
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class=" x-topic-8-0 x-topic-8-1 x-topic-8-2" id="styler-id1.1.1.4.9">
+            
+            <a name="12"> </a><div class=" x-title-33-0 x-title-33-2" combinedFontName="off" id="styler-id1.1.1.4.9.1" class="Heading1">Calling Browser from Creo.JS</div><span class=" x-prolog-1-0">
+               <div class=" x-metadata-1-0"><span class=" x-keywords-2-0"><a xmlns="" class="indexterm" name="13"></a><span class=" x-indexterm-1-0"></span></span></div></span><div class=" x-body-3-0">
+               <div class=" x-p-7-0"><span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> code can call the global functions declared in the browser page. These calls are asynchronous and also return Promise. Use
+                  the browser object to access the browser functions. You can call all the global functions, which are available in the browser
+                  environment. For example, <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">alert()</span></span>, <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">prompt()</span></span>, and <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">confirm()</span></span>, and so on.
+               </div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script type="text/creojs" id=</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">callbrowser.creojs</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&gt;
+    function callBrowser (message) {
+        Browser.alert ('this is alert: ' + message)
+        Browser.addTextNode (message)
+    }
+&lt;/script&gt;
+
+&lt;script&gt;
+    function addTextNode (message) {
+        document.appendChild (document.createTextNode (message))
+    }
+    CreoJS.callBrowser ('Just text')
+&lt;/script&gt;
+</span></pre><div class=" x-p-7-0">ECMAScript 8 keywords <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">async</span></span> and <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">await</span></span> can be used to synchronously call browser code from <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span>. In the following example, <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> script uses the browser method <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">prompt()</span></span> to make two browser calls to enquire about the first and last name of the user. It uses browser method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">alert()</span></span> to display the full name.
+               </div>
+               <div class=" x-p-7-0">In the example below, the function <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">askFullName</span></span> is declared as <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">async</span></span> and is executed asynchronously by <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> environment. However, internally it synchronizes with two browser <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">prompt()</span></span> calls using <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">await</span></span> construct. All the functions that are declared <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">async</span></span> return a Promise. The result is consumed with a callback lambda-function, which is set using <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Promise.then()</span></span>.
+               </div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script type="text/creojs" id=</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">askfullname.creojs</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&gt;
+    async function asyncCall (message, response = '') {
+        return Browser.prompt (message, response)
+    }
+
+    async function askFullName (fn, ln) {
+        const first = await asyncCall ('What is your first name?', fn)
+        const last = await asyncCall ('What is your last name?', ln)
+        return {first, last}
+    }
+
+    const user = pfcGetCurrentSession ().GetEnvironmentVariable ('USERNAME')
+    askFullName (user.slice (0,1).toUpperCase (),
+                 user.slice (1,2).toUpperCase () + user.slice (2))
+        .then (name =&gt;
+          Browser.alert (`Your name is ${name.first} ${name.last}`))
+&lt;/script&gt;
+</span></pre></div>
+         </div>
+         <div class=" x-topic-8-0 x-topic-8-1 x-topic-8-2" id="styler-id1.1.1.4.10">
+            
+            <a name="14"> </a><div class=" x-title-33-0 x-title-33-2" combinedFontName="off" id="styler-id1.1.1.4.10.1" class="Heading1">Recommended Best Practices</div><span class=" x-prolog-1-0">
+               <div class=" x-metadata-1-0"><span class=" x-keywords-2-0"><a xmlns="" class="indexterm" name="15"></a><span class=" x-indexterm-1-0"></span><a xmlns="" class="indexterm" name="16"></a><span class=" x-indexterm-1-0"></span></span></div></span><div class=" x-body-3-0">
+               <div class=" x-p-7-0">It is recommended to use the following best practices while creating <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> applications:
+                  <div class=" x-ul-1-0">
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0">Do not have frequent calls between environments. There are inter-process communication overheads of passing <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_Creo.JS-E_7_61">Creo.JS</span> call parameters and its result between the browser and <span class=" x-ph-2-0" id="creojs_working_details_Creo.JSScripts-EF070751_PTCCreo-E_7_70">Creo</span> processes.</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0">Collect all the data required by a transaction and exchange it in a single call.</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class=" x-topic-8-0 x-topic-8-1 x-topic-8-2" id="creojs_working_details_EnablingSecuritySettings-FCA94556_7_236">
+            
+            <a name="17"> </a><div class=" x-title-33-0 x-title-33-2" combinedFontName="off" id="styler-id1.1.1.4.11.1" class="Heading1">Enabling Security Settings</div><span class=" x-prolog-1-0">
+               <div class=" x-metadata-1-0"><span class=" x-keywords-2-0"><a xmlns="" class="indexterm" name="18"></a><span class=" x-indexterm-1-0"></span><a xmlns="" class="indexterm" name="19"></a><span class=" x-indexterm-1-0"></span></span></div></span><div class=" x-body-3-0">
+               <div class=" x-p-7-0">Every time the Internet Explorer or Chromium browser receives HTTP requests from unknown sites, which try to access  <span class=" x-ph-2-0" id="creojs_working_details_EnablingSecuritySettings-FCA94556_7_246">Creo.JS</span> or <span class=" x-ph-2-0" id="creojs_working_details_EnablingSecuritySettings-FCA94556_7_247">Web.Link</span> methods and objects, a warning message appears. You are prompted to confirm if you want to allow the request from the site.
+               </div>
+               <div class=" x-p-7-0">The warning message provides you with the ability to save the decision.
+                  <div class=" x-ul-1-0">
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0">If the request from the site is allowed, in future all the requests from the site will be executed without any warning message.</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0">If the request from the site is not allowed, in future all the requests from the site will not be executed, and the warning
+                                    message is not displayed.</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>.
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

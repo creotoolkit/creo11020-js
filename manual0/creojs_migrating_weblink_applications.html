@@ -1,0 +1,1420 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-9">
+      <meta name="ch:resourceid" content="creojs_migrating_weblink_applications" scheme="atiChunkerMeta">
+      
+      
+      
+      
+      
+      
+      <link href="css/styler.css" rel="stylesheet" type="text/css">
+      <title>Migrating Existing Web.Link Applications to Creo.JS</title>
+   
+<SCRIPT LANGUAGE="JAVASCRIPT">
+  function findProperNode() { top.frames[0].document.apiwizard.manual("MANCREOJS_MIGRATING_WEBLINK_APPLICATIONS0", location.hash); }
+</SCRIPT>
+
+</head>
+   <body onLoad="findProperNode()">
+      
+         
+         <a name="0"> </a><div class=" x-title-65-0 x-title-65-1" combinedFontName="off" id="styler-id1.1.1.5.1" class="ChapterTitle">Migrating Existing Web.Link Applications to Creo.JS</div>
+         <div class=" x-shortdesc-1-0"></div><span class=" x-prolog-1-0">
+            <div class=" x-metadata-1-0"><span class=" x-keywords-2-0"><a xmlns="" class="indexterm" name="1"></a><span class=" x-indexterm-1-0"></span><a xmlns="" class="indexterm" name="2"></a><span class=" x-indexterm-1-0"></span></span></div></span><div class=" x-body-2-0">
+            <div class=" x-p-7-0">This section describes how to migrate existing <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_pubsTopic-1-4578B6_8_14">Web.Link</span> to <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_pubsTopic-1-4578B6_8_15">Creo.JS</span>.
+            </div>
+         </div>
+         <div class=" x-topic-4-0 x-topic-4-1 x-topic-4-2" combinedFontName="off" id="creojs_migrating_weblink_applications_MigratingExistingW_8_16">
+            
+            <a name="3"> </a><div class=" x-title-33-0 x-title-33-2" combinedFontName="off" id="styler-id1.1.1.5.5.1" class="Heading1">Overview</div>
+            <div class=" x-body-3-0">
+               <div class=" x-p-7-0">You can migrate your existing <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> applications to <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span>. You must split the existing code in two groups of script sections, one section that runs in the browser and another that
+                  runs in <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_22">Creo</span>.
+               </div>
+               <div class=" x-p-7-0"><span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> code in the sections that continue running in the browser, does not have to be migrated as all the <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> features are supported. You can begin by migrating the critical sections of your <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> application, whose performance has been affected by the browser architecture change. Such sections usually contain many calls
+                  to <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_22">Creo</span> APIs in a single user interaction with web application. For example, querying and modifying items, features or parameters
+                  of <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_22">Creo</span> models, traversing assembly structures, and so on.
+               </div>
+            </div>
+         </div>
+         <div class=" x-topic-8-0 x-topic-8-1 x-topic-8-2" id="styler-id1.1.1.5.6">
+            
+            <a name="4"> </a><div class=" x-title-33-0 x-title-33-2" combinedFontName="off" id="styler-id1.1.1.5.6.1" class="Heading1">Guidelines to Migrate the Applications</div><span class=" x-prolog-1-0">
+               <div class=" x-metadata-1-0"><span class=" x-keywords-2-0"><a xmlns="" class="indexterm" name="5"></a><span class=" x-indexterm-1-0"></span><a xmlns="" class="indexterm" name="6"></a><span class=" x-indexterm-1-0"></span></span></div></span><div class=" x-body-3-0">
+               <div class=" x-p-7-0">Use the following guidelines to move existing <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> applications to <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span>.
+               </div>
+               <div class=" x-p-7-0">While <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> supports the same set of APIs as <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span>, it implements some data representation changes to work with the most recent ECMAScript extensions. The subsequent sections
+                  of the guide explain the API changes.
+               </div>
+               <div class=" x-p-7-0">This new approach improves the development productivity. The <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">weblink.legacy.creojs</span></span> script reduces the effort of migrating the existing <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> applications. <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">weblink.legacy.creojs</span></span> wraps most of the <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span>-style APIs into old <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span>-style APIs. This enables developers to preserve the old style during the migration. See the subsequent sections for information
+                  on where <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> style is supported by including the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">weblink.legacy.creojs</span></span> script.
+               </div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script type="text/creojs" src=</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">weblink.legacy.creojs</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&gt;&lt;/script&gt;</span></pre><div class=" x-section-1-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_53">
+                  <div class=" x-title-58-0" combinedFontName="off" id="styler-id1.1.1.5.6.3.5.1">Convert Collections in Web.Link to Arrays in Creo.JS</div>
+                  <div class=" x-p-7-0"><span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> changed <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> sequences representation to JavaScript arrays. This enables use of JavaScript array construction and processing APIs.
+                  </div>
+                  <div class=" x-p-7-0">The <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> functions that accept and return collections can be converted to use arrays in <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span>.
+                  </div>
+                  <div class=" x-p-7-0">Consider the following <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> code with collections:
+                  </div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script&gt;
+    var features=SubComp.ListFeaturesByType
+                    (true, pfcCreate ("pfcFeatureType").FEATTYPE_COMPONENT);
+    for (var mi=0; mi &lt; features.Count; mi++)
+    {
+        var feature=features.Item(mi);
+        . . .
+    }
+&lt;/script&gt;
+</span></pre><div class=" x-p-7-0">You can rewrite the <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> code to <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> as below:
+                  </div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script type="text/creojs" id=</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">iteratefeatures.creojs</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&gt;
+    const features = SubComp.ListFeaturesByType
+                        (true, pfcFeatureType.FEATTYPE_COMPONENT);
+    // classical loop
+    for (var mi=0; mi &lt; features.length; mi++) {
+        const feature=features [mi];
+        // . . .
+    }
+    // range loop
+    for (const feature of features) { // . . .
+    }
+    // functional style with arrow function
+    features.forEach (feature =&gt; {/* ... */})
+&lt;/script&gt;
+</span></pre><div class=" x-p-7-0">The existing <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> style can be retained by including the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">weblink.legacy.creojs</span></span> script.
+                  </div>
+               </div>
+               <div class=" x-section-1-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_71">
+                  <div class=" x-title-58-0" combinedFontName="off" id="styler-id1.1.1.5.6.3.6.1">Use the Method pfcGetCurrentSession() Instead of MpfcCOMGlobal.GetProESession ()</div>
+                  <div class=" x-p-7-0"><span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcCOMGlobal.GetProESession()</span></span> must be replaced with the method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcGetCurrentSession()</span></span> in <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span>.
+                  </div>
+                  <div class=" x-p-7-0">Consider a <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> code that uses the method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcGetCurrentSession()</span></span>.
+                  </div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script&gt;
+    var session = null;
+    function init()
+    {
+        var ComObj = pfcCreate ("MpfcCOMGlobal");   
+        if (ComObj) {
+            session = ComObj.GetCurrentSession ();
+            alert ("Successfully connected to Creo!");
+        }
+        else {
+            alert ("Cannot connect to Creo!");
+        }
+    }
+    init ()
+&lt;/script&gt;          
+</span></pre><div class=" x-p-7-0">You can rewrite the <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> code to <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> as below:
+                  </div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script type="text/creojs" id=</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">initsession.creojs</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&gt;
+    const session = pfcGetCurrentSession ()
+&lt;/script&gt;
+</span></pre><div class=" x-p-7-0">The existing <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> style can be retained by including the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">weblink.legacy.creojs</span></span> script.
+                  </div>
+               </div>
+               <div class=" x-section-1-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_89">
+                  <div class=" x-title-58-0" combinedFontName="off" id="styler-id1.1.1.5.6.3.7.1">Call Global Functions Directly Without Calling pfcCreate</div>
+                  <div class=" x-p-7-0">Global functions that are declared on model levels are explicitly predeclared in the global context of <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span>. These functions can be directly referenced with module prefix and function name in the applications.
+                  </div>
+                  <div class=" x-p-7-0">Consider the following <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> code:
+                  </div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script&gt;
+    var compPath=pfcCreate ("MpfcAssembly").CreateComponentPath
+                    (asmObj, intPath);
+&lt;/script&gt;          
+</span></pre><div class=" x-p-7-0">You can rewrite the <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> code to <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> as below:
+                  </div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script type="text/creojs" id=</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">testglobalfunc.creojs</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&gt;
+    const compPath=pfcCreateComponentPath(asmObj, intPath);
+&lt;/script&gt;
+</span></pre><div class=" x-p-7-0">The existing <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> style can be retained by including the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">weblink.legacy.creojs</span></span> script.
+                  </div>
+               </div>
+               <div class=" x-section-1-0" id="styler-id1.1.1.5.6.3.8">
+                  <div class=" x-title-58-0" combinedFontName="off" id="styler-id1.1.1.5.6.3.8.1">Use Arrays for Basic Types Collections</div>
+                  <div class=" x-p-7-0">In <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> an array of integers is created as <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">intseq</span></span>.
+                  </div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script&gt;
+    var intPath=pfcCreate ("intseq"); // Create sequence
+    intPath.Append (1); // Append item
+    // . . .
+    intPath.Append (4); // Append item
+    // Remove last item
+    intPath.Remove (intPath.Count - 1, intPath.Count);
+&lt;/script&gt;          
+</span></pre><div class=" x-p-7-0">In <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> an array of integers is created as <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">intPath</span></span>.
+                  </div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script type="text/creojs" id=</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">arrayvsseq.creojs</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&gt;
+    const intPath=[]; // Create array
+    intPath.push (1); // Push item 1
+    intPath.push (2,3,4); // Push a group of items 2,3,4
+    // Remove last item
+    intPath.pop ();
+&lt;/script&gt;
+</span></pre><div class=" x-p-7-0">In <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> you can also use an array initializer.
+                  </div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script type="text/creojs" id=</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">arrayvsseq.creojs</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&gt;
+    const intPath=[1,2,3,4]; // Create and initialize array
+    // Remove last item
+    intPath.pop ();
+&lt;/script&gt;
+</span></pre><div class=" x-p-7-0">If you want to pass a sequence as an argument to a <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> method, you can pass an array of JavaScript objects. The conversion of the array to sequence is done internally.
+                  </div>
+                  <div class=" x-p-7-0">The existing <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> style can be retained by including the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">weblink.legacy.creojs</span></span> script.
+                  </div>
+               </div>
+               <div class=" x-section-1-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_121">
+                  <div class=" x-title-58-0" combinedFontName="off" id="styler-id1.1.1.5.6.3.9.1">Enumerations are Represented as Objects Without Calling pfcCreate</div>
+                  <div class=" x-p-7-0">In <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> you can reference enumerations directly without calling <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcCreate</span></span>. This is because all types definitions are predeclared in the global context of <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span>. 
+                  </div>
+                  <div class=" x-p-7-0">Consider following <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> code, which calls <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcCreate</span></span> to reference enumerations.<pre class=" x-codeblock-1-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script&gt;
+    var componentType=pfcCreate ("pfcFeatureType").FEATTYPE_COMPONENT
+    var featureStatus=pfcCreate ("pfcFeatureStatus").FEAT_ACTIVE
+    var partType=pfcCreate ("pfcModelType").MDL_PART
+&lt;/script&gt;          
+</span></pre></div>
+                  <div class=" x-p-7-0">You can rewrite the <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> code to <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> as below:
+                  </div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script type="text/creojs" id=</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">enumerations.creojs</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&gt;
+    const componentType=pfcFeatureType.FEATTYPE_COMPONENT
+    const featureStatus= pfcFeatureStatus.FEAT_ACTIVE
+    const partType= pfcModelType.MDL_PART
+&lt;/script&gt;          
+</span></pre><div class=" x-p-7-0">In <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> enumeration value is an integer, while in <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> it is an object. In <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> the method <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">value()</span></span> returns the integer value and <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">string()</span></span> returns the string representation. The method <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">values()</span></span> returns an array of objects representing all enumeration values.
+                  </div>
+                  <div class=" x-p-7-0">For example, the following code defines a <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> method, which returns a JavaScript object, which maps enumeration string representations to their integer values. The HTML
+                     rendering part of the application calls the <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> function and appends unordered list to the current document with enumeration names and their respective integer values.
+                  </div>
+                  <div class=" x-note-2-0 x-note-2-3">
+                     <div class=" x--ufe-note-1-0 x--ufe-note-1-1" combinedFontName="off">Note</div>
+                     <div class=" x-p-7-0">If you are combining <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_20">Web.Link</span> and <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> code in the same application, it is recommended to convert enumerations to integers.
+                     </div>
+                  </div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script type="text/creojs" id=</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">enumitemtypes.creojs</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;
+    </span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">function getModelItemTypes () {
+        const types = {}
+        for (const v of pfcModelItemType.values()) {
+            types [v.string()] = v.value()
+        }
+        return types
+    }
+&lt;/script&gt;
+
+&lt;script&gt;
+    CreoJS.getModelItemTypes ().then (function (types) {
+        if (types) {
+            var listElement = document.createElement ('ul')
+            document.appendChild (listElement)
+            for (var itemType in types) {
+                var listItem = document.createElement ('ul')
+                listItem.innerHTML = '&lt;b&gt;' + itemType + '&lt;/b&gt;: ' +
+                                     types [itemType]
+                listElement.appendChild (listItem)
+            }
+        }
+    })
+&lt;/script&gt;
+</span></pre><div class=" x-p-7-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcFeatureType.FEATTYPE_COMPONENT</span></span> returns the enumeration value object in <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span>. It generally does not return an integer value. The method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">toPrimitive(mode)</span></span> is defined on all enumeration objects. This method must not to be called explicitly. JavaScript executes this method implicitly
+                     depending on context. In <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span>, this method is defined to return enumeration value name when it is being used in string context and to return its integer
+                     value when used in numeric context. In the following example, the method prints numeric value of <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcFeatureType.FEATTYPE_COMPONENT</span></span>.
+                  </div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script type="text/creojs" id=</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">enumtoprimitive.creojs</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&gt;
+    Browser.alert (+pfcFeatureType.FEATTYPE_COMPONENT);
+&lt;/script&gt;
+</span></pre><div class=" x-p-7-0">If it is not clear which context is used, call the method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">value()</span></span> to get the integer value.
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class=" x-topic-8-0 x-topic-8-1 x-topic-8-2" id="styler-id1.1.1.5.7">
+            
+            <a name="7"> </a><div class=" x-title-33-0 x-title-33-2" combinedFontName="off" id="styler-id1.1.1.5.7.1" class="Heading1">Additional API Features Introduced in Creo.JS</div>
+            <div class=" x-body-3-0">
+               <div class=" x-section-1-0" id="styler-id1.1.1.5.7.2.1">
+                  <div class=" x-title-58-0" combinedFontName="off" id="styler-id1.1.1.5.7.2.1.1">Getting Creo Object Type Information</div>
+                  <div class=" x-p-7-0">Creo API object hierarchy design uses multiple inheritance hierarchy to model the API concepts. Use JavaScript <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">instanceof</span></span> construct to check only the most derived type of the object. To check if object is an instance of any intermediate class
+                     in the hierarchy use <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">isInstanceOf()</span></span> method as shown in the following example. Note that the API accepts either string type name <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcAssembly</span></span> or type variable <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcModel.getClassName()</span></span> method to return the name of object class as a string.
+                  </div><pre class=" x-codeblock-3-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&lt;script type="text/creojs" id=</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">typeinfoexample.creojs</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">&gt;
+  let currentModel = pfcGetCurrentSession().CurrentModel
+  print (currentModel.isInstanceOf (</span><span xmlns="" class="cf-Monospace-combined-Default">&#8220;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcAssembly</span><span xmlns="" class="cf-Monospace-combined-Default">&#8221;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">))
+  print (currentModel.isInstanceOf (pfcModel))
+  print (currentModel.isInstanceOf (pfcSolid))
+  print (currentModel.isInstanceOf (currentModel.getClassName()))
+&lt;/script&gt;
+</span></pre></div>
+               <div class=" x-section-1-0" id="styler-id1.1.1.5.7.2.2">
+                  <div class=" x-title-58-0" combinedFontName="off" id="styler-id1.1.1.5.7.2.2.1">Managing Session Data</div>
+                  <div class=" x-p-7-0">While each set of <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> scripts that belong to the same page work in their isolated contexts, they can interact with each other through session storage
+                     maintained in the <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> global context. The following functions manipulate this context:
+                     <div class=" x-ul-1-0">
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">saveToSession(key, value)</span></span>&#8212;Saves <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">value</span></span> to the global session map under the name <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">key</span></span>.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getFromSession(key)</span></span>&#8212;Returns the global session map value saved under the given name.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">removeFromSession(key)</span></span>&#8212;Removes value from the global session map specified by the given <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">key</span></span>.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+               <div class=" x-section-1-0" id="styler-id1.1.1.5.7.2.3">
+                  <div class=" x-title-58-0" combinedFontName="off" id="styler-id1.1.1.5.7.2.3.1">Managing User Application Data</div>
+                  <div class=" x-p-7-0"><span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> contains a set of functions that allows you to store and access data in your Application Data (<span class=" x-filepath-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">AppData</span></span>) folder (both local and roaming.) The following functions enable you to manipulate application data:
+                     <div class=" x-ul-1-0">
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">saveToAppData(relativeFileName, data, roaming=false)</span></span>&#8212;Saves the given data string to a file inside your <span class=" x-filepath-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">AppData</span></span> folder for <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> data (<span class=" x-filepath-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">CreoJS/data</span></span> by default). Relative file name may contain directories. If such a directory does not exist in <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getCreojsAppDataFolder(roaming)</span></span>, it is created.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getFromAppData(relativeFileName, roaming=false)</span></span>&#8212;Reads a specified file from your <span class=" x-filepath-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">AppData</span></span> folder for <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> data. The function throws an exception if the file does not exist. On success returns a string with the content of the specified
+                                       file.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">deleteFromAppData(relativeFileName, roaming=false)</span></span>&#8212;Removes specified file from your <span class=" x-filepath-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">AppData</span></span> folder. The function throws an exception on failure.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">existsAppData(relativeFileName, roaming=false)</span></span>&#8212;Returns <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">true</span></span> when a file with the given relative name exists in <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getRoamingAppDataFolder(roaming)</span></span>, <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">false</span></span> otherwise.</span><div class=" x-p-5-0">The following functions enable you to retrieve the full name of your <span class=" x-filepath-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">AppData</span></span> folders:
+                                    </div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                     <div class=" x-ul-2-0">
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getAppDataFolder(roaming=false)</span></span>&#8212;Returns the full name of the current user&#8217;s <span class=" x-filepath-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">AppData</span></span> folder &#8211;<span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Local</span></span> (default) or <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Roaming</span></span>.
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getLocalAppDataFolder()</span></span>&#8212;Returns the full name of the current user&#8217; s <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Local</span></span> subfolder inside the <span class=" x-filepath-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">AppData</span></span> folder. Same as <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">%LOCALAPPDATA%</span></span> or <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getAppDataFolder(false)</span></span>.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getRoamingAppDataFolder()</span></span>&#8212;Returns the full name of the current user&#8217;s <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Roaming</span></span> subfolder inside the <span class=" x-filepath-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">AppData</span></span> folder. Same as <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">%APPDATA%</span></span> or <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getAppDataFolder(true)</span></span>.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getCreojsAppDataFolder(roaming=false)</span></span>&#8212;Returns the full name of the directory inside the current user's <span class=" x-filepath-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">AppData</span></span> designated to store <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> objects. By default, it is <span class=" x-filepath-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">CreoJS/data</span></span>. Can be reconfigured through the setting <span class=" x-filepath-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">appdata_subdir</span></span> in the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">creo_js_app.conf</span></span> file.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getCreojsLocalAppDataFolder()</span></span>&#8212;Same as <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getCreojsAppDataFolder(false)</span></span>.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getCreojsRoamingAppDataFolder()</span></span>&#8212;Same as <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getCreojsAppDataFolder(true)</span></span>.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+               <div class=" x-section-1-0" id="styler-id1.1.1.5.7.2.4">
+                  <div class=" x-title-58-0" combinedFontName="off" id="styler-id1.1.1.5.7.2.4.1">Uploading or Downloading Data to and from the Web server</div>
+                  <div class=" x-p-7-0">
+                     <div class=" x-ul-1-0">
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">uploadFile(URL, filePath, responseHandler=null)</span></span>&#8212;Uploads the specified file to the specified server. If <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">responseHandler</span></span> in not provided, works in sync mode and returns a URL received from the server on success. The function throws an exception
+                                       on failure.</span><div class=" x-p-5-0">If <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">responseHandler</span></span> is specified, the function returns an empty string and executes the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">responseHandler</span></span> upon completing the upload providing <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">HTTP</span></span> response object as an argument of the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">responseHandler</span></span>.
+                                       <div class=" x-note-1-0 x-note-1-3">
+                                          <div class=" x--ufe-note-1-0 x--ufe-note-1-1" combinedFontName="off">Note</div>
+                                          <div class=" x-p-7-0">You must have read access to the directory from which you are trying to upload the file.</div>
+                                       </div>
+                                    </div>
+                                    <div class=" x-p-5-0">For example:<pre class=" x-codeblock-1-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">function respHandler (httpResponse) {
+				print ('Response received: ' + 
+						JSON.stringify (httpResponse, null, 4));
+}
+uploadFile ('http://my.server.com/upload.php', 'my_file.bin',
+					respHandler);</span></pre></div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">uploadFiles(URL, jsonOptions </span><span xmlns="" class="cf-Monospace-combined-Default">&#8230;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">, responseHandler=null)</span></span>&#8212;Uploads one or more files with a single request. Unlike <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">uploadFile</span></span> method, this function uses multipart mode. For each file to be uploaded you can specify a name by setting the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">fieldName</span></span> as <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">jsonOptions</span></span> and content type.</span><div class=" x-p-5-0">In sync mode where no response handler provided, the function returns a string representation of a <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">JSON</span></span> containing information about each uploaded file on success. If response handler is specified, the returned <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">JSON</span></span> response will be passed as an argument of the response handler.
+                                    </div>
+                                    <div class=" x-p-5-0">For example:<pre class=" x-codeblock-1-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">let resp = uploadFiles (
+					'http://my.server.com/filestorage/upload.cgi',
+					{filePath: 'project.gif', fieldName: 'fileToUpload'},
+					{filePath: 'config.pro', fieldName: 'anotherFileToUpload'
+					       	 	contentType: 'plain/text'}
+);</span></pre></div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">downloadFile(URL, filePath, responseHandler=null)</span></span>&#8212;Downloads a file from the server and saves it with the specified name. Like<span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">uploadFile</span></span> this function also works in sync or async mode. In sync mode it returns the name of the file on success or throws an exception
+                                       on failure.
+                                       <div class=" x-note-1-0 x-note-1-3">
+                                          <div class=" x--ufe-note-1-0 x--ufe-note-1-1" combinedFontName="off">Note</div>
+                                          <div class=" x-p-7-0">You must have write access to the download directory.</div>
+                                       </div></span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">uploadString(URL, valueToUpload, responseHandler=null)</span></span>&#8212;Uploads a string to the server. It works like <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">uploadFile</span></span>, however uploads a simple string and not a file.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">downloadString(URL, responseHandler=null)</span></span>&#8212;Downloads a string from the specified URL. In sync mode, it returns the body of the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">HTTP</span></span> response as a string on success or throws an exception on failure.</span><div class=" x-p-5-0">For example:<pre class=" x-codeblock-1-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">let resp = uploadString (
+						'http://my.server.com/uploadMessage.php',
+						'Message to send to server'
+);
+print (`Retrieve though: ${resp}`);
+let content = downloadString (resp);
+print (`downloaded content:\n&lt;div&gt;&lt;i&gt;${content}&lt;/i&gt;&lt;/div&gt;`);</span></pre></div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">uploadJSON(URL, jsonObject, responseHandler=null)</span></span>&#8212;Uploads a <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">JSON</span></span> object to the Web server. Works like <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">uploadString</span></span> applied to <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">JSON</span></span> <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">stringified</span></span> <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">jsonObject</span></span>, however uses <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Content-Type: application/json</span></span> when sending the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">HTTP</span></span> request.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">downloadJSON(URL, responseHandler=null)</span></span>&#8212;Downloads a string from the specified server and then parses it to convert to a <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">JSON</span></span> object. In sync mode, returns this object, and in async mode, converts the body of the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">HTTP</span></span> response to the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">JSON</span></span> object and then invokes the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">responseHandler</span></span>.</span><div class=" x-p-5-0">For example:<pre class=" x-codeblock-1-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">const respHandler = function (httpResponse) {
+				if (httpResponse.statusCode == 200 &amp;&amp; httpResponse.body) {
+						 print (`Address: ${httpResponse.body.street},
+								${httpResponse.body.city},
+								${httpResponse.body.state} 
+								${httpResponse.body.zip}`);
+				}
+};
+downloadJSON ('http://my.server.com/download.php&amp;myfile',
+	respHandler
+);		</span></pre></div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+               <div class=" x-section-1-0" id="styler-id1.1.1.5.7.2.5">
+                  <div class=" x-title-58-0" combinedFontName="off" id="styler-id1.1.1.5.7.2.5.1">Reading and Writing files</div>
+                  <div class=" x-p-7-0"><span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> provides functions to access the local files.
+                     <div class=" x-note-1-0 x-note-1-3">
+                        <div class=" x--ufe-note-1-0 x--ufe-note-1-1" combinedFontName="off">Note</div>
+                        <div class=" x-p-7-0">You must have read and write access rights to the folders in which the files are located.</div>
+                     </div>
+                     <div class=" x-ul-1-0">
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">readFileAsString(filename)</span></span>&#8212;Reads the content of the specified file and returns it as a single string. The parameter <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">filename</span></span> is either a full or a relative file name. When the relative file name is provided, the file is searched for in the working
+                                       directory. The function throws an exception in case of failure.
+                                       <div class=" x-note-1-0 x-note-1-3">
+                                          <div class=" x--ufe-note-1-0 x--ufe-note-1-1" combinedFontName="off">Note</div>
+                                          <div class=" x-p-7-0">This function is defined only if the <span class=" x-filepath-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">config.pro</span></span> file contains the option <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">web_link_file_read</span></span> set as <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">YES</span></span>.
+                                          </div>
+                                       </div></span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">writeFileAsString (filename, text)</span></span>&#8212;Writes specified text to the specified file. The parameter <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">filename</span></span> is either a full or a relative file name. When the relative file name is provided, the file is searched for in the working
+                                       directory. The function, throws an exception in case of failure.
+                                       <div class=" x-note-1-0 x-note-1-3">
+                                          <div class=" x--ufe-note-1-0 x--ufe-note-1-1" combinedFontName="off">Note</div>
+                                          <div class=" x-p-7-0">This function is defined only if the <span class=" x-filepath-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">config.pro</span></span> file contains the option <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">web_link_file_read</span></span> set as <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">YES</span></span>.
+                                          </div>
+                                       </div></span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+               <div class=" x-section-1-0" id="styler-id1.1.1.5.7.2.6">
+                  <div class=" x-title-58-0" combinedFontName="off" id="styler-id1.1.1.5.7.2.6.1">Creo.JS Web server</div>
+                  <div class=" x-p-7-0"><span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> has an internal Web server that provides access to <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> from remote computers and allows you to access <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> via <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">HTTP</span></span> protocols and through web sockets. It also lets you use Chrome DevTools for remote debugging of the <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> script. The following functions manage the Web server:
+                     <div class=" x-ul-1-0">
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">startWebServer(port=-1)</span></span>&#8212;Starts the Web server listening on the given port. When <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">port</span></span> is set to -1, the value of the port is taken from the configuration file <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">creo_js_app.conf</span></span>. When <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">port</span></span> is set to 0, server will start on any available port, otherwise the server will try to start on the specified port.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">isWebServerStarted()</span></span>&#8212;Returns <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">true</span></span> if the Web server is successfully started, false otherwise.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getWebServerPort()</span></span>&#8212;Returns the port number on which the Web server is listening. If the Web server is not started, the function returns -1.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">addWebSocketServerHandler(path, dataHandler, closeHandler=null, errorHandler=null, openHandler=null)</span></span> or <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">addWebSocketServerHandler(path, {dataHandler, closeHandler, errorHandler, openHandler})</span><span xmlns="" class="cf-Monospace-combined-Default">&#8212;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Sets a web socket handler for the specified path. The second parameter is an object that may contain the following handlers:</span></span><span class=" x-p-4-0">
+                                       <div class=" x-ul-1-0">
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">dataHandler</span></span>&#8212; <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">function (WebSocketConnection conn, string msg)</span></span></span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">closeHandler</span></span>&#8212; <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">function (WebSocketConnection conn)</span></span></span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">errorHandler</span></span>&#8212; <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">function (WebSocketConnection conn, string msg)</span></span></span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0"><span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">openHandler</span></span>&#8212; <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">function (WebSocketConnection conn)</span></span></span><div class=" x-p-5-0">For example:<pre class=" x-codeblock-1-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">addWebSocketServerHandler ('/test', {
+				dataHandler: function (conn, msg) {
+							print (`'/test' handler received message:
+											&lt;div&gt;${msg}&lt;/div&gt;`);
+							conn.send (`'/test' handler successfully received 
+									${msg.length} bytes`);
+  				 }
+		 errorHandler: function (conn, err) {
+				        print (`Error: ${err}`);}
+				}
+);</span></pre></div>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div></span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                     <div class=" x-ul-2-0">
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">removeWebSocketServerHandler(path)</span></span>&#8212;Removes a web socket handler that corresponds to the specified path.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">addServerHandler(path, dataHandler, method=RequestMethod.ALL)</span></span>&#8212;Sets a Web server handler for the specified path. Data handler is the function <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">function (WebServerRequest req, WebServerResponse resp)</span></span> that processes the requests.</span><div class=" x-p-5-0">Request <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">req</span></span> contains information about the incoming request, while response <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">resp</span></span> has tools for sending response. The <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">method</span></span> argument specifies the type or types of requests this handler serves. Following are the possible values:
+                                       <div class=" x-ul-1-0">
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0">RequestMethod.GET,</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0">RequestMethod.POST,</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0">RequestMethod.PUT,</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0">RequestMethod.HEAD,</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0">RequestMethod.PUT,</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0">RequestMethod.DELETE,</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0">RequestMethod.OPTIONS,</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0">RequestMethod.PATCH,</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0">RequestMethod.ALL</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0">or any combinations of the above.</span><div class=" x-p-5-0">For example:<pre class=" x-codeblock-1-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">addServerHandler ('/api', 
+		   	 function (req, resp) {
+				    	 print (`Executing function ${req.GET['function']}`);
+                	var res = execute (req.GET['function'], 
+											    req.GET ['arg']);
+						resp.writeHead (200, 'OK', 
+								{'Content-type': 'application/json'})
+								.end (JSON.stringify (res));
+		}, RequestMethod.GET);</span></pre></div>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div>
+                                    </div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">object WebServerRequest</span></span>&#8212;<span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> type that contains the following methods:
+                                       <div class=" x-ul-1-0">
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0">url(string)</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0">headers(map)</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0">method(string)</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">query(string)</span></span>&#8212;part of the URL address after '?' (not including)</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">remoteAddress(string)</span></span>&#8212;address of the machine that sent the request</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">remotePort(int)</span></span>&#8212;port of the remote machine</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">contentType(string)</span></span>&#8212;value of the 'Content-Type' header</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">body(string)</span></span>&#8212;body of the request</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">GET(map)</span></span>&#8212;all arguments from the query string</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">POST(map)</span></span>&#8212;all arguments from the body of the POST request</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">PARAMS(map)</span></span>&#8212;all arguments from the combined methods</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">saveToFile(filename)</span></span>&#8212;saves the body of the request in the given file, provided <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> has write access to the directory. If filename is a relative path, it is considered from the <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_22">Creo</span> current running directory.</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">saveToAppDataFile(relFileName, roaming=false)</span></span>&#8212;saves the body of the request to a file located in the current user&#8217;s <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">AppData</span></span> folder <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Local</span></span> or <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Roaming</span></span>.</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div></span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">object WebServerResponse</span></span>&#8212;<span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> type that has the following methods:
+                                       <div class=" x-ul-1-0">
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0">writeHead(statusCode, statusMessage, headers {name:value})</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">setHeader(name, value) </span></span>&#8212; add response header</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">write(data)</span></span>&#8212;append the data to the response body</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">writeFromFile write(filename)</span></span>&#8212;writes the specified file to the response output stream, provided <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> has read access to the directory, where the file is located.</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">writeFromAppDataFile(relFileName, roaming=false)</span></span>&#8212;writes contents of the specified file from the current user&#8217;s <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">AppData</span></span> <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Local</span></span> or <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Roaming</span></span> folder to the response stream</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table border="0" cellpadding="0" cellspacing="0" class=" x-li-10-0" style="table-layout: fixed; " width="100%">
+                                             <col style="width: 0em">
+                                             <col style="width: 18pt">
+                                             <col>
+                                             <tbody>
+                                                <tr valign="baseline">
+                                                   <td align="right"></td>
+                                                   <td align="left" style="word-break: keep-all; "><span style="font-family: 'Arial Unicode MS'; ">&#9675;</span>&nbsp;
+                                                   </td>
+                                                   <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">end (data=null)</span></span>&#8212;complete and send the response</span></td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </div></span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">removeServerHandler(path)</span></span>&#8212;Removes the Web server handler for the given path.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">stopWebServer()</span></span>&#8212;Stops the currently running Web server.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+               <div class=" x-section-1-0" id="styler-id1.1.1.5.7.2.7">
+                  <div class=" x-title-58-0" combinedFontName="off" id="styler-id1.1.1.5.7.2.7.1">Including External Scripts</div>
+                  <div class=" x-p-7-0">You can split complex scripts into a set of scripts where one main script uses other scripts as libraries in <span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span>. This is implemented through the <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">require</span></span> method like NodeJS has.
+                     <div class=" x-ul-1-0">
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">require(requiredScriptName)</span></span>&#8212;Behaves in the same way NodeJS <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">require</span></span> does: embraces the code in the required file with <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">function (module, exports){and },)</span></span> executes the created function and returns<span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">module.exports</span></span> as the result. Searches for the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">requiredScriptName</span></span> in the current script directory, then in the directory one level up, and so on until the file in need is found or directory
+                                       under consideration is not an accessible directory, then keeps searching in the <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getScriptPath()</span></span>.</span><div class=" x-p-5-0">When a file was successfully required (found and executed) in a context, it gets cached for this context and all consecutive
+                                       calls of the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">require</span></span> function with this script returns the cached value.
+                                    </div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">forgetRequired(requiredScriptName)</span></span>&#8212;Removes the required file from cache. That is, consecutive calls of <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">require</span></span> results in reloading and re-executing the required script. This function could be helpful in the developing stage.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">forgetAllRequired()</span></span>&#8212;Removes all cached required scripts from the current context.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+               <div class=" x-section-1-0" id="styler-id1.1.1.5.7.2.8">
+                  <div class=" x-title-58-0" combinedFontName="off" id="styler-id1.1.1.5.7.2.8.1">Accessing Scripts Local Location</div>
+                  <div class=" x-p-7-0"><span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> has an API that gives you access to locally stored script files:
+                  </div>
+                  <div class=" x-ul-2-0">
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getScriptPath()</span></span>&#8212;Returns an array of folders where <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">require</span></span> is looking for a required script. The script path is to be set in the <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">creo_js_app.conf</span></span> file by setting <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">js_path</span></span> property.</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getScriptFolder()</span></span>&#8212;Returns the full path of the directory JavaScript scripts located in.</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getScriptsList()</span></span>&#8212;Returns a string containing a list of all scripts names from <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getScriptFolder()</span></span> separated by commas. Script names are the relative names to <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getScriptFolder()</span></span>.</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                        <col style="width: 0em">
+                        <col style="width: 18pt">
+                        <col>
+                        <tbody>
+                           <tr valign="baseline">
+                              <td align="right"></td>
+                              <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                              <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getScripts()</span></span>&#8212;Returns an array of all script names from <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">getScriptFolder()</span></span>.</span></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+               <div class=" x-section-1-0" id="styler-id1.1.1.5.7.2.9">
+                  <div class=" x-title-58-0" combinedFontName="off" id="styler-id1.1.1.5.7.2.9.1">Other API Features</div>
+                  <div class=" x-p-7-0">
+                     <div class=" x-ul-1-0">
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">setCIPSequenceHandler(arrayHandler)</span></span>&#8212;Sets a JavaScript callback that gets executed every time an invoked OTK method returns a CIP sequence. All CIP sequences
+                                       get converted to JavaScript arrays. This callback allows you to define a function which takes a CIP sequence converted to
+                                       an array and define some methods. For example, <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Item()</span></span>, <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Set()</span></span>, <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">Append()</span></span>, etc. to make it behave similar to WebLink sequences for backward compatibility. See how <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">weblink.legacy.creojs</span></span> uses this function.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">setUseCIPSequenceHandler(bool on)</span></span>&#8212;Turns on/off the invocation of the CIP sequence handler (if set.) </span><div class=" x-p-5-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">setUseCIPSequenceHandler(false)</span></span> works like <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">setCIPSequenceHandler(null)</span></span>. If CIP sequence handler is not set, this function has no effect.
+                                    </div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">setOnContextClose(handler)</span></span>&#8212;Sets a JavaScript callback to execute upon closing the current context. For example, when the embedded browser window which
+                                       is open for the current context, is closed.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">help (name=</span><span xmlns="" class="cf-Monospace-combined-Default">&#8217;&#8217;</span><span xmlns="" class="cf-Monospace-combined-European_Alphabets">)</span></span> &#8212;Opens a browser window with OTK help for the specified class or class method. The argument <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">name</span></span> can be either a <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">className</span></span> or <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">className.MethodName</span></span>. For example:</span><div class=" x-p-5-0"><pre class=" x-codeblock-1-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">help ('pfcSession');
+help ('pfcSession.GetAppInfo');</span></pre></div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0"><span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">print(message)</span></span>&#8212;Prints a given message to the current browser window.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+               <div class=" x-section-1-0" id="styler-id1.1.1.5.7.2.10">
+                  <div class=" x-title-58-0" combinedFontName="off" id="styler-id1.1.1.5.7.2.10.1">Array-Like Structures</div>
+                  <div class=" x-p-7-0"><span class=" x-ph-2-0" id="creojs_migrating_weblink_applications_MigratingExistingW_8_21">Creo.JS</span> has array-like structures.
+                     <div class=" x-ul-1-0">
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-13-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0">Additional features are introduced on array-like structures, which represent two and three dimensional concepts, such as,
+                                       <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcPoint3D</span></span>, <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcPoint2D</span></span>, <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">pfcMatrix3D</span></span>, and so on.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0">Properties x, y, z, if applicable, representing <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">get(0)</span></span>, <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">get (1)</span></span>, and <span class=" x-codeph-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">get(2)</span></span> respectively.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-16-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0">Method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">dims()</span></span>&#8212;Returns an array of sizes for each dimension.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table border="0" cellpadding="0" cellspacing="0" class=" x-li-14-0" style="table-layout: fixed; " width="100%">
+                           <col style="width: 0em">
+                           <col style="width: 18pt">
+                           <col>
+                           <tbody>
+                              <tr valign="baseline">
+                                 <td align="right"></td>
+                                 <td align="left" style="word-break: keep-all; ">&#8226;&nbsp;</td>
+                                 <td><span class=" x-p-4-0">Method <span class=" x-cmdname-2-0" combinedFontName="Monospace-combined"><span xmlns="" class="cf-Monospace-combined-European_Alphabets">dim(dimensionIndex)</span></span>&#8212;Returns the size of the dimension with specified index.</span></td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>
